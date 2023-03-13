@@ -1,0 +1,70 @@
+.box .content {
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+    background-color: #FFACAC;
+}
+
+.box {
+	width: 570px;
+	height: 650px;
+	padding: 15px;
+	position: absolute;
+	overflow: hidden;
+    top: 150px;
+    left: 550px;
+}
+
+.box::before {
+	content: '';
+	position: absolute;
+	width: 150%;
+	height: 150%;
+	background: repeating-linear-gradient(
+			white 0%,
+			white 7.5px,
+			#8EA7E9 7.5px,
+			#8EA7E9 15px,
+			white 15px,
+			white 22.5px,
+			#C1AEFC 22.5px,
+			#C1AEFC 30px);
+	transform: translateX(-20%) translateY(-20%) rotate(-45deg);
+	animation: animate 20s linear infinite;
+}
+
+.box .content {
+	position: relative;
+	flex-direction: column;
+	box-sizing: border-box;
+	text-align: center;
+	font-family: sans-serif;
+	z-index: 2;
+}
+
+.box,
+.box .content {
+	box-shadow: 0 0 2px deeppink,
+				0 0 5px rgba(0, 0, 0, 1),
+				inset 0 0 5px rgba(0, 0, 0, 1);
+	border-radius: 10px;
+}
+
+.box .content h2 {
+	color: deeppink;
+}
+
+.box .content p {
+	color: dimgray;
+}
+
+@keyframes animate {
+	from {
+		background-position: 0;
+	}
+
+	to {
+		background-position: 0 450px;
+	}
+}
