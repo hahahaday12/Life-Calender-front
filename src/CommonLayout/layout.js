@@ -124,7 +124,6 @@ const HeaderBox = styled.div`
     width: 430px;
     display: flex;
     height: 40px;
-    background-color: green;
     position: absolute;
     left: 40%;
     top:40px;
