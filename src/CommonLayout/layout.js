@@ -37,9 +37,9 @@ const AllBackGround = styled.div`
     position: relative;
     background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
 
-    ${media.mobileS`    
-        height: 150vh;
-        width: 125vw;
+    ${media.mobileS`
+        width: 125vw;    
+        height: 160vh;
     `}
 
     ${media.tablet`
@@ -51,7 +51,6 @@ const AllBackGround = styled.div`
         width: 100vw;   
         height: 100vh;
     `}
-
 `
 
 const LeftContainer = styled.div`
