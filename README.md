@@ -12,9 +12,9 @@
 
 ## 배포 주소
 
-> **개발 버전** : [http://voluntain.cs.skku.edu/](http://voluntain.cs.skku.edu/) <br>
-> **프론트 서버** : [http://voluntain.cs.skku.edu:33307/](http://voluntain.cs.skku.edu:33307/)<br>
-> **백엔드 서버** : [http://voluntain.cs.skku.edu:2223/](http://voluntain.cs.skku.edu:2223/)<br>
+> **개발 버전** : [https://web-life-calender-front-6g2llffebnui.sel3.cloudtype.app/](https://web-life-calender-front-6g2llffebnui.sel3.cloudtype.app/) <br>
+> **프론트 서버** : [https://web-life-calender-front-6g2llffebnui.sel3.cloudtype.app/](https://web-life-calender-front-6g2llffebnui.sel3.cloudtype.app/)<br>
+> **백엔드 서버** : []()<br>
 
 ## 웹개발팀 소개
 |      김하은 (Front)       |          박다현 (BackEnd)         |                                                                                                                          
