@@ -26,82 +26,78 @@ const TwoPage = () => {
 export default TwoPage;
 
 const JoinLatout = styled.div`
-    ${AllLayout}
+  ${AllLayout}
 
-    ${media.mobileS`    
+  ${media.mobileS`    
     width: 100vw;
     height: 100vh;
   `}
 
-${media.tablet`   
-width: 100vw;
+  ${media.tablet`   
+    width: 100vw;
     height: 100vh;
   `}
 
-
-${media.desktopM`    
-width: 100vw;
+  ${media.desktopM`    
+    width: 100vw;
     height: 100vh;
   `}
 
-${media.desktopL`
-width: 100vw;
+  ${media.desktopL`
+    width: 100vw;
     height: 100vh;
   `}
 `
-
-
 const LeftBox = styled.div`
-    ${LeftContainer}
+  ${LeftContainer}
 
-    ${media.mobileS`
+  ${media.mobileS`
     width:1px;
     height: 100%;
   `}
 
-    ${media.tablet`
+  ${media.tablet`
     width: 250px;
-    height: 100%;
-    
+    height: 100%;  
   `}
 
-
-${media.desktopM`
+  ${media.desktopM`
     width: 250px;
     height: 100%;
   `}
 
-${media.desktopL`
-width: 250px;
-height: 100%;
-`}
+  ${media.desktopL`
+    width: 250px;
+    height: 100%;
+  `}
 `
 
 const Joincontainer = styled.div`
-    width: 495px;
-    height: 655px;
-    position: absolute;
-    display: flex;
-    background-color: #8D9EFF;
-    bottom: 40px;
-    left: 630px; 
+  width: 495px;
+  height: 655px;
+  position: absolute;
+  display: flex;
+  background-color: #8D9EFF;
+  bottom: 40px;
+  left: 630px; 
 
-   ${media.mobileS`
-      top: 50px;
-      left: 1px;
+  ${media.mobileS`
+    width: 435px;
+    top: 50px;
+    left: 1px;
   `}
 
-    ${media.tablet`
+  ${media.tablet`
+    width: 495px;
     left: 500px;
   `}
 
-
-${media.desktopM`
+  ${media.desktopM`
     top:100px;
     left: 600px;
   `}
 
-${media.desktopL`
+  ${media.desktopL`
     top:100px;
     left: 750px;
   `}
@@ -117,6 +113,14 @@ const Joinbox = styled.div`
     position:absolute;
 
     & input::placeholder {
-    ${InnerPlaceHolder}
-    } 
+      ${InnerPlaceHolder}
+    }
+    
+    ${media.mobileS`
+      left: 30px;
+    `}
+
+    ${media.tablet`
+      left: 65px;
+    `}
 `

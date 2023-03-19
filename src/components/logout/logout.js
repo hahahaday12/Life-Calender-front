@@ -4,7 +4,6 @@ import { fontsize } from '../../styles/Media/theme';
 
 const LogoutBox = () => {
   
-
   const logOut = () => {
   TokenRepository.removeToken();
   };
@@ -31,7 +30,6 @@ const Logout = styled.div`
   z-index: 50;
   left: 50px;
   
-
     :hover{
         background-color: #f8e7ff;
     }

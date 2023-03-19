@@ -1,4 +1,4 @@
-import { Axios } from './@core';
+import  Axios  from 'axios';
 import { API_URL } from '../Common/Common';
 
 const PATH = '/user';
@@ -54,7 +54,5 @@ const Api =  {
       title, content, date, color
     })
   }
-
-
 };
 export default Api

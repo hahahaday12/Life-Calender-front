@@ -29,8 +29,7 @@ const SidebarItem = ({ menu, isActive, isColor }) => {
         </div>
       </SidebarItems>
     )
-}
-
+};
 export default SidebarItem;
 
 const SidebarItems = styled.div`

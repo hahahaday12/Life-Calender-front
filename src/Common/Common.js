@@ -11,8 +11,8 @@ export const emailCheck = (mail) =>{
 const PwExp = 
   /^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[A-Z])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+]).{8,16}$/;
 
-export const PwCheck = (password) => {
-  return PwExp.test(password) ? true : false;
+  export const PwCheck = (password) => {
+    return PwExp.test(password) ? true : false;
 }
 
 export const API_URL = "https://port-0-life-calender-server-nx562olf6ypsvj.sel3.cloudtype.app";

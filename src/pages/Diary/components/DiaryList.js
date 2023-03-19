@@ -41,7 +41,6 @@ const DiaryForm = () => {
 
   useEffect(() =>{
     const tmpColor = { ...recoilColor };
-    console.log(tmpColor);
     setColorPeeker(tmpColor.color);
     let defaultDate = new Date();
     if(ViewData.date !== ""){
@@ -105,12 +104,10 @@ const DiaryForm = () => {
   
   const getChangeValue = (e) => {
     const{name, value} = e.target;
-    console.log(name,value);
     setViewData({
       ...ViewData,
       [name]: value
     })
-    console.log(ViewData);
   };
 
   const update = () => {
@@ -126,7 +123,7 @@ const DiaryForm = () => {
             ,color:"#5800FF"
           })
         } else {
-          console.error(response.data.message)
+          alert("system 오류 입니다. 문의주세요.", response.data.message);
         }
       })
     } else {
@@ -134,6 +131,8 @@ const DiaryForm = () => {
     }
   }
   const create = () => {
+    
+
     if(window.confirm('다이어리를 등록 하시겠습니까?')===true){
       Api.diaryPost(ViewData).then((response) => {
           alert("다이어리가 등록 되었습니다😊")
@@ -145,7 +144,10 @@ const DiaryForm = () => {
     }
   }
   const submit = () => {
-    console.log("ViewData" + JSON.stringify(ViewData));
+    if(ViewData.title === '' || ViewData.title === " "){
+      alert("제목은 필수 입니다.");
+      return false;
+    }
     if(ViewData.id === ""){ 
       create();
     } else {
@@ -171,7 +173,9 @@ const DiaryForm = () => {
 
   const handleEnter = (e) => {
     if (e.key === 'Enter') {
-      submit();
+      if(!e.shiftKey){
+        submit();
+      }
     }
   }
 

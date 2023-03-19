@@ -10,10 +10,9 @@ const Usertitle = () => {
   const [users, setUsers] = useRecoilState(userState);
     Api.user()
     .then(response => {
-      console.log(response.data)
       setUsers(response.data.data.user.name);
     },(error) => {
-      console.log(error)
+      alert("system 오류입니다. 문의주세요.", error)
       TokenRepository.removeToken();
     });
 

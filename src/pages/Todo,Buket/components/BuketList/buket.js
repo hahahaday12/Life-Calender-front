@@ -60,12 +60,15 @@ const BuketList = () => {
   };
 
   const onClickBucket = () => {
+    if(ViewData.content === '' || ViewData.content === " "){
+      alert("공백으로 등록할수없습니다.");
+      return false;
+    }
     Api.buketPost(ViewData)
     .then((response) => {
       alert('등록 완료😊');
     setViewData({
-      title: "test"
-      ,content:""
+      content:""
       ,date:new Date()
     })
       search();
@@ -74,7 +77,9 @@ const BuketList = () => {
 
   const handleEnter = (e) => {
     if (e.key === 'Enter') {
-      onClickBucket();
+      if(!e.shiftKey){
+        onClickBucket();
+      }
     }
   };
     

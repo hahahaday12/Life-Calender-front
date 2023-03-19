@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { useState, useCallback } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import {  PwCheck, emailCheck} from '../../../Common/Common.js'
-import AuthApi from '../../../apis/authApi.js';
+import AuthService from '../../../service/auth.service.js';
 import { RegisterButton } from '../../../styles/DetailStyle/JoinStyle/JoinStyle.js';
 import { fontsize } from '../../../styles/Media/theme.js';
 
@@ -21,7 +21,6 @@ const navigate = useNavigate();
   const [isPassword, setIsPassword] = useState(false)
   const [isPasswordConfirm, setIsPasswordConfirm] = useState(false)
 
-
  //오류 메세지 저장
   const [nameMessage, setNameMessage] = useState('')
   const [emailMessage, setEmailMessage] = useState('')
@@ -34,23 +33,26 @@ const navigate = useNavigate();
     }
   }
 
+  const onSignUpSumit = () => { 
+      if(email === undefined || email === ""  || email === null){
+          alert("아이디 입력해주세요.");
+          return false;
+      }
 
-  const onSignUpSumit = useCallback(
-    async () => { 
       try {
-        await AuthApi.signup({id:email, password, name })
+        AuthService.signup({id:email, password, name })
           .then((res) => {
-            console.log('response:', res)
             if (res.status === 201) {
-              console.log('User profile', res.data);
               alert('가입되었습니다.')
               navigate("/")       
+            }else{
+
             }
           })
       } catch (err) {
-        console.error(err)
+        alert("system 오류입니다. 문의주세요.", err)
       }
-    },[email, name, password])
+  }
 
   const onChangeName = useCallback((e) => {
       setUserName(e.target.value)

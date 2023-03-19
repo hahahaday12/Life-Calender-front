@@ -1,9 +1,8 @@
- import styled from 'styled-components';
- import { fontsize } from '../styles/Media/theme';
- import React from 'react';
+import React from 'react';
+import styled from 'styled-components';
+import { fontsize } from '../styles/Media/theme';
 
 const UserName = ({ users }) => {
-    console.log(users)
     return (
       <Userbox>
       <P>💕{users}님 환영합니다.</P>

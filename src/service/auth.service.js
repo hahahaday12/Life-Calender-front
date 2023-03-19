@@ -1,39 +1,16 @@
-import axios from 'axios';
+import Axios from 'axios';
 import { API_URL } from '../Common/Common';
 
 
+const PATH = '/user';
 
-
-const Login = (id, password) => {
-  return axios.post(API_URL + "/user/signin", {
-   id,
-   password,
-  })
-  .then((response) => {
-    if (response.data.message === "successful") {
-      localStorage.setItem( 'token', response.data.token);
-      alert("로그인 되었습니다.")
-    }
-    return response.data;
-  });
+const Login = ({id, password}) => {
+  return Axios.post(API_URL + PATH + `/signin`, { id, password });  
 };
 
-
-const signup = (id, password, name) => {
-  return axios.post(API_URL + "/POST/user", {
-    id,
-    password,
-    name,
-  })
-  .then((response) => {
-    if (response.data.message === "successful") 
-    return response.data;
-  });
+const signup = async ({id, password, name}) => {
+  return Axios.post(API_URL + PATH, { id, password, name });
 };
-
-const logout = () => {
-  localStorage.removeItem('token');
-}
 
 const getCurrentUser = () => {
   return localStorage.getItem("token");
@@ -42,7 +19,6 @@ const getCurrentUser = () => {
 const AuthService = {
   Login,
   signup,
-  logout,
   getCurrentUser
 };
 

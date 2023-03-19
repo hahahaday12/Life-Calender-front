@@ -2,15 +2,13 @@ import { useState } from 'react'
 import styled from 'styled-components'
 import  { useNavigate }  from 'react-router-dom';
 import useInputs from '../../../hooks/useInputs'
-import AuthApi from '../../../apis/authApi';
+import AuthService from '../../../service/auth.service';
 import TokenRepository from '../../../repository/TokenRepository';
-import { ErrorHandle } from '../../../apis/@core';
 import { InnerPlaceHolder } from '../../../styles/Common/CommonStyle';
 import { fontsize } from '../../../styles/Media/theme';
 
 const LoginInput = () => {
-  const navigate = useNavigate();
-  const [error, setError] = useState('');  
+  const navigate = useNavigate(); 
   const [{ email, password }, onChangeForm] = useInputs({
     email: '',
     password: '',
@@ -18,13 +16,19 @@ const LoginInput = () => {
 
   const handleEnter = (e) => {
     if (e.key === 'Enter') {
-      HandleLogin();
+      if(!e.shiftKey){
+        HandleLogin();
+      }
     }
   }
 
-  const HandleLogin = () => {
+   const  HandleLogin  = async () => {
+    if(email === undefined || email === ""  || email === null){
+      alert("아이디 입력해주세요.");
+      return false;
+    }
     try {
-        AuthApi.login({ id:email, password })
+        await AuthService.Login({ id:email, password })
         .then((res) => {
         if (res.status === 201) {
           TokenRepository.setToken(res);
@@ -35,9 +39,7 @@ const LoginInput = () => {
         }
         })
     } catch (error) {
-        alert(" 아이디(로그인 전용 아이디) 또는 비밀번호를 잘못 입력했습니다.입력하신 내용을 다시 확인해주세요.");  
-        const err = ErrorHandle(error);
-        setError(err);
+        alert(error.response.data.errorMessage);
       };
     };
 

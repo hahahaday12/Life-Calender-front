@@ -4,8 +4,6 @@ const useInputs = (initialValues) => {
   const [values, setValues] = useState(initialValues);
 
   const getValue = (e) => {
-
-    console.log(e.target.value);
     return e.target.value;
   };
 

@@ -60,7 +60,7 @@ const Sidebar = () => {
       </SidebarContainer>
     </>
   )
-}
+};
 
 export default Sidebar;
 

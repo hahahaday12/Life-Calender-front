@@ -15,7 +15,6 @@ import { fontsize } from '../../../../styles/Media/theme';
 
 const TodoListForm = () => {
   const [ ,setBtnStatus] = useState(false);
-  const [ViewTodo, setViewTodo] = useState([]);
   const [Todolist, setTodoList] = useState({
     content:""
    ,date:""
@@ -38,7 +37,6 @@ const TodoListForm = () => {
   
   const getChangeTodo = (e) => {
     const{name, value} = e.target;
-    console.log(name,value);
     setTodoList({
       ...Todolist,
       [name]: value
@@ -64,7 +62,6 @@ const TodoListForm = () => {
 
     //상태 값에 따라서 데이터를 나눔
     for(let i = 0; i<response.data.data.length;i++){
-      console.log(response.data.data[i].status);
       if(response.data.data[i].status === "todo"){
         todoInfo.push(response.data.data[i]);
       }else{
@@ -102,7 +99,6 @@ const TodoListForm = () => {
   };
 
   const DatePickChange = (date) => {
-    console.log(date);
     setTodoList({
       ...date,
       'date': date
@@ -120,6 +116,10 @@ const TodoListForm = () => {
   };
 
   const onClickTodo = () => {
+    if(Todolist.content === '' || Todolist.content === " "){
+      alert("공백으로 등록할수없습니다.");
+      return false;
+    }
     Api.todoPost(Todolist)
   .then((response) => {
       alert('등록 되었습니다.😊');
@@ -151,7 +151,6 @@ const onDragEnd = (result, columns, setColumns) => {
   
   //상태값이 변경되었을때
   if (source.droppableId !== destination.droppableId) {
-    console.log(result);
     const sourceColumn = columns[source.droppableId];
     const destColumn = columns[destination.droppableId];
 
@@ -191,7 +190,9 @@ const onDragEnd = (result, columns, setColumns) => {
 
   const handleEnter = (e) => {
     if (e.key === 'Enter') {
-      onClickTodo();
+      if(!e.shiftKey){
+        onClickTodo();
+      }
     }
   };
 

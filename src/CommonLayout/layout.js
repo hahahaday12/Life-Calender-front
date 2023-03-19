@@ -1,50 +1,45 @@
 import React from 'react'
 import "../font/font.css"
-import { fontsize } from '../styles/Media/theme';
+import Sidebar from './sideBar';
 import styled from 'styled-components';
 import Usertitle from '../pages/user/user';
-import Sidebar from './sideBar';
 import LogoutBox from '../components/logout/logout';
 import { media } from '../styles/Media/media';
+import { fontsize } from '../styles/Media/theme';
 import { MediaImg } from '../styles/DetailStyle/CalendarStyle/diary';
 
 const Layout = ({ children }) => {
-
-    return(
-    <> 
+        return(
+        <> 
         <AllBackGround>
             <LeftContainer>
                 <img alt='logoimg' src= './img/Life Calander_logo.png'/>
                 <Ip>Life <br/> Calendar</Ip>
                 <Sidebar/>
-           </LeftContainer>
-
+            </LeftContainer>
             <HeaderBox>
                 <Usertitle/>
                 <LogoutBox/>
             </HeaderBox>
-
             <div>
                 <div className="content"> {children} </div>
             </div>
         </AllBackGround>
-    </>
+        </>
     )
 };
 export default Layout;
 
 const AllBackGround = styled.div`
-    //width:1534px;
     width: 100vw;
-    /* height: 720px; */
     height: 100vh;
-    //height: 100%;
     display: flex;
     position: relative;
     background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
 
     ${media.mobileS`    
         height: 132vh;
+        width: 490vw;
     `}
 
     ${media.tablet`
@@ -80,34 +75,31 @@ const LeftContainer = styled.div`
        width: 500px;
        height: 80px;
 
-    & img { 
-      position: absolute;
-      bottom: -30px;
-      left: 40px;
-      width: 60px;
-      height: 60px;
-    }
-
-   `}
+        & img { 
+        position: absolute;
+        bottom: -30px;
+        left: 40px;
+        width: 60px;
+        height: 60px;
+        }
+    `}
     
     ${media.tablet`   
-    width: 250px;
-    height: 100%;
+       width: 250px;
+       height: 100%;
 
-    & img {
-        ${MediaImg}
-        }
-
-    `}
-
-
-    ${media.desktopM`   
-    width: 250px;
-    height: 100%;
-
-    & img {
+        & img {
             ${MediaImg}
         }
+    `}
+
+    ${media.desktopM`   
+       width: 250px;
+       height: 100%;
+
+        & img {
+                ${MediaImg}
+            }
     `}
 
     ${media.desktopL`
