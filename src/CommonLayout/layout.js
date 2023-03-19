@@ -38,8 +38,8 @@ const AllBackGround = styled.div`
     background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
 
     ${media.mobileS`    
-        height: 132vh;
-        width: 490vw;
+        height: 142vh;
+        width: 50vw;
     `}
 
     ${media.tablet`

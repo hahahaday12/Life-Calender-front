@@ -159,7 +159,7 @@ const DiaryBoxContainer = styled.div`
   }
   
   & .titleBox {
-    width: 193px;
+    width: 190px;
     height: 55px;
     margin: 0 auto;
     border-radius: 0 0 10px 10px;
