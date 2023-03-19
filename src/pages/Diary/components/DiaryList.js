@@ -144,8 +144,11 @@ const DiaryForm = () => {
     }
   }
   const submit = () => {
-    if(ViewData.title === '' || ViewData.title === " "){
-      alert("제목은 필수 입니다.");
+    // eslint-disable-next-line no-mixed-operators
+    if(ViewData.title === '' || ViewData.title === " "
+      || ViewData.content === '' || ViewData.content === " "
+    ){
+      alert("제목과 내용은 필수 입니다.");
       return false;
     }
     if(ViewData.id === ""){ 

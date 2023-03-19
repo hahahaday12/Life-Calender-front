@@ -29,7 +29,7 @@ const Allwrap = styled.div`
   ${AllLayout}
 
   ${media.mobileS`    
-    width: 120vw;
+    width: 130vw;
     height: 100vh;
     right: 10px;
   `}
@@ -59,7 +59,7 @@ const Centerwrap = styled.div`
   /* background-color: red ; */
   
   ${media.mobileS`
-    right: 40px;
+    right: 30px;
   `}
 
   ${media.mobileM`
