@@ -37,7 +37,7 @@ const Allwrap = styled.div`
   ${media.tablet`   
     width: 100vw;
     height: 100vh;
-
+    right: 0px;
   `}
 
   ${media.desktopM`   
