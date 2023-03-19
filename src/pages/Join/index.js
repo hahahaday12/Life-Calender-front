@@ -82,7 +82,7 @@ const Joincontainer = styled.div`
   left: 630px; 
 
   ${media.mobileS`
-    width: 428px;
+    width: 424px;
     top: 50px;
     left: 1px;
   `}

@@ -71,7 +71,7 @@ const LeftContainer = styled.div`
     }
 
     ${media.mobileS`    
-       width: 500px;
+       width: 510px;
        height: 80px;
 
         & img { 
