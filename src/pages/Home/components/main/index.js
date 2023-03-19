@@ -29,7 +29,7 @@ const Allwrap = styled.div`
   ${AllLayout}
 
   ${media.mobileS`    
-    width: 130vw;
+    width: 100vw;
     height: 100vh;
     right: 10px;
   `}
