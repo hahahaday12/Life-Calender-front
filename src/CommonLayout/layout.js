@@ -39,7 +39,7 @@ const AllBackGround = styled.div`
 
     ${media.mobileS`    
         height: 142vh;
-        width: 50vw;
+        width: 120vw;
     `}
 
     ${media.tablet`
