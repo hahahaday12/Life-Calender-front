@@ -49,7 +49,7 @@ For building and running the application you need:
 
 ### Installation
 ``` bash
-$ git clone [https://github.com/hahahaday12/Life-Calender-front.git]https://github.com/hahahaday12/Life-Calender-front.git
+$ git clone https://github.com/hahahaday12/Life-Calender-front.git
 $ cd client
 ```
 #### Backend
