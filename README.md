@@ -96,7 +96,8 @@ $ npm run start
 |  **Calendar 페이지**   |  **List 페이지**  |
 | <img width="400" alt="image" src="https://user-images.githubusercontent.com/101441685/226154883-bf07b3c5-8f81-4de1-bee2-abfef75c8235.png">| <img width="500" alt="image" src="https://user-images.githubusercontent.com/101441685/226155238-abeff04a-f6ff-4712-ba41-c80d17f9d501.png">    |  <img width="329" src="https://user-images.githubusercontent.com/50205887/208038965-43a6318a-7b05-44bb-97c8-b08b0495fba7.png"/>      |
 |  **Diary 페이지**  
-| <img width="400" alt="image" src="https://user-images.githubusercontent.com/101441685/226154883-bf07b3c5-8f81-4de1-bee2-abfef75c8235.png">
+| <img width="500" alt="image" src="https://user-images.githubusercontent.com/101441685/226282559-9db657c4-769a-4c3c-8775-fb749602c031.png">
+
 
 
 ---
