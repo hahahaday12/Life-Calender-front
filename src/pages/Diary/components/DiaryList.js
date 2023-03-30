@@ -58,6 +58,7 @@ const DiaryForm = () => {
     if(params){
       date = params;
     }else{
+      defaultSetting();
       date = new Date(ViewData.date);
     }
     axios.get(API_URL+ '/diary?year='+String(date.getFullYear())+'&month='+String(date.getMonth()+1))
@@ -66,9 +67,8 @@ const DiaryForm = () => {
       for(let i=0;i<response.data.data.length;i++){
           listData[i] = response.data.data[i];
           listData[i].date = UTCchangeKST(response.data.data[i].date)
-      }    
+      }   
       setData(listData);
-      defaultSetting();
     })
   };
 
