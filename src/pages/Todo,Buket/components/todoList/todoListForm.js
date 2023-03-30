@@ -92,10 +92,10 @@ const TodoListForm = () => {
       } else {
         console.error(response.data.message);
       }
-    });
+      });
     } else {
-          alert("취소 되었습니다.")
-      }
+      alert("취소 되었습니다")
+    }
   };
 
   const DatePickChange = (date) => {

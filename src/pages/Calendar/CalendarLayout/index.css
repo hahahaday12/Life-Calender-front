@@ -20,11 +20,19 @@
 
 
 /* 캘린더 상단 여백 */
-.fc .fc-toolbar.fc-header-toolbar {
-  background-color: white;
+.fc .fc-toolbar-chunk{
+  /* background-color: blue;
+  width: 100%;
+  position: relative; */
+}
+
+/* .fc .fc-toolbar.fc-header-toolbar {
+  background-color: rgb(229, 109, 109);
   border-radius: 10px;
   width: 100%;
-}
+  display: flex;
+  position: relative;
+} */
 
 .fc-theme-standard .fc-scrollgrid {
   position: relative;
@@ -46,105 +54,109 @@
 
 /* 월 타이틀 폰트/위치 조정 */
 .fc .fc-toolbar-title {
-  width: 230px;
-  height: 30px;
-  display: flex;
-  padding-left: 40px;
+  /* width: 200px;
   position: relative;
+  margin:  auto;
   text-align: center;
   align-items: center;
   font-size: 25px;
   left: 250px;
+  background-color: antiquewhite; */
+
+  position: relative;
+  left: 150px;
 }
 
 @media screen and (min-width: 375px) and (max-width: 1023px)  {
   .fc .fc-toolbar-title {
-    left: 150px;
+    position: relative;
+    left: 150px;  
   }
-}
-
-.fc-button-group{
- position: relative;
- display: flex;
- gap: 320%;
- right: 430px;
 }
 
 @media screen and (min-width: 375px) and (max-width: 1023px)  {
   .fc-button-group {
-  right: 320%;
-  gap: 250%;
+  
+  
   }
  }
 
  @media screen and (min-width: 1024px) and (max-width: 1279px)  {
   .fc-button-group {
-    right: 390%;
-    gap: 250%;
+    /* right: 390%;
+    gap: 250%; */
   }
  }
 
 @media screen and (min-width: 1280px) and (max-width: 1440px)  {
   .fc-button-group {
-    right: 420%;
+    /* right: 420%; */
   }
  }
 
 .fc-prev-button.fc-button.fc-button-primary {
-  display: flex;
+  /* display: flex;
   background-color: white;
   border: 0;
-  outline: 0;
+  outline: 0; */
+  background-color: tan;
+  right: 350px;
+
 }
 
 .fc-prev-button.fc-button.fc-button-primary:active{
-  background-color: white;
+  /* background-color: white; */
 }
 
 
 .fc-next-button.fc-button.fc-button-primary{
-  display: flex;
+  /* display: flex;
+  position: relative;
   background-color: white;
   border: 0;
-  outline: 0;
+  outline: 0; */
+  background-color: tan;
+  right: 90px;
 }
 .fc-next-button.fc-button.fc-button-primary:active{
-  background-color: white;
+  /* background-color: white; */
 }
 
 .fc-icon.fc-icon-chevron-left{
-  color: #0e0d0d;
+  /* color: #0e0d0d; */
 }
                         
 .fc-icon.fc-icon-chevron-right{
-  color: #070000;
+  /* color: #070000; */
 }
 
 .fc-today-button.fc-button.fc-button-primary{
-  background-color: rgb(255, 239, 200);
-  position: absolute;
+  /* background-color: rgb(255, 239, 200);
+  position: relative;
   color: rgb(8, 8, 8);
   border: 0;
-  outline: 0;
+  outline: 0; */
+  position: absolute;
+  right: 10px;
 }
 
 /* 버튼박스 레이아웃 */
 .btnWrap {
-  display: flex;
+  /* display: flex;
   width: 600px;
   margin: 0 auto;
   margin-top: 200px;
-  justify-content: space-between;
+  justify-content: space-between; */
 }
 
 .iconBox {
-  width: 130px;
+  /* width: 130px;
   height: 60px;
-  border-radius: 30px;
+  border-radius: 30px; */
 }
 
 .btnText {
-  font-size: 18px;
+  /* font-size: 18px; */
 }  
 
 /* 날짜 폰트 */

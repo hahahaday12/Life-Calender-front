@@ -12,13 +12,17 @@ const Onepage = () => {
     return(
         <>
         <Allwrap>
-          <div className='shape'>
+          
           <Centerwrap>
+          <div className='shape'>
+            <InBox>
             <LogoIner/>
             <LoginInput/>
             <Join/>
+            </InBox>
+          </div>
           </Centerwrap>
-          </div>  
+            
         </Allwrap>
         </>
     )
@@ -51,23 +55,54 @@ const Allwrap = styled.div`
   `}
 `
 const Centerwrap = styled.div`
-  width: 400px;
-  height: 560px;
-  margin: 0 auto;
-  position: relative;
-  top: 15%;
-  /* background-color: red ; */
-  
+  width: 550px;
+  height: 700px;
+  position: absolute;
+  left: 20%;
+  background-color: red;
+
   ${media.mobileS`
-    right: 30px;
+    width: 99%;
+    left: 1%;
+    top: 5%;
   `}
 
   ${media.mobileM`
-    right: 20px;
+    width: 550px;
+    top: 15%;
+    left: 35%;
+    height: 75%;
   `}
 
 
   ${media.desktopL`
-    right: 20px;
+    top: 15%;
+    right: 35%;
+    left: 35%;
   `}
+`
+const InBox = styled.div`
+  width: 80%;
+  height: 80%;
+  position: absolute;
+  top: 100px;
+  margin: auto;
+  //background-color: yellow;
+
+  ${media.mobileS`
+    width: 80%;
+    left: 10%;
+  `}
+
+  ${media.mobileM`
+    top: 15%;
+    //right: 35%;
+    height: 75%;
+  `}
+
+
+  ${media.desktopL`
+    left: 10%;
+  `}
+
 `

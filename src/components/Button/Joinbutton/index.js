@@ -11,11 +11,11 @@ const Join = () => {
 export default Join;
 
 const LoginText = styled.div`
-    left: 250px;
+    left: 50%;
     width: 150px;
     position: absolute;
     font-size: ${fontsize[2]};
     text-align: right;
     color: white;
-    margin-top: 10px;
+    margin-top: 3%;
 `

@@ -24,6 +24,7 @@ const media = Object.entries(size).reduce((acc, [key, value]) => {
         ${css(first, ...interpolations)}
       }
     `,
+    
   };
 }, {});
 

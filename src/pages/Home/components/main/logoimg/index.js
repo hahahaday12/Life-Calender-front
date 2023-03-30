@@ -13,9 +13,10 @@ const LogoIner = () => {
 export default LogoIner;
 
 const Img = styled.img`
-    width: 180px;
+    width: 40%;
     height: 180px;
-    display: block;
+    display: flex;
+    position: relative;
     margin: 0 auto;
 `
 

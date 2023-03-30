@@ -5,7 +5,8 @@ export const AllLayout = css`
   //width:1535px;
   //height:720px;
   width: 100%;
-  height: 100%;
+  //height: 100%;
+  display: flex;
   position: relative;
   background-color: #8EC5FC;
   background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);

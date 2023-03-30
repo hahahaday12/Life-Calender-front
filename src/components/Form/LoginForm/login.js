@@ -79,13 +79,13 @@ const LoginForm = styled.div`
     margin-top: 50px;
   
    & input {
-    box-sizing: border-box;
     width: 80%;
     height: 50px;
-    margin-bottom: 30px ;
+    margin-bottom: 30px;
     border: none;
     border-bottom: 4px solid #afafaf;
     font-size: ${fontsize[0]};
+    display: flex;
     position: relative;
     left: 5%;
     border-radius: 10px;
@@ -93,6 +93,7 @@ const LoginForm = styled.div`
 
   & input::placeholder {
     ${InnerPlaceHolder}
+    
   }
 
   & input:focus {

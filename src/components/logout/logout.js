@@ -38,7 +38,7 @@ const Logout = styled.div`
         width: 70px;
         height: 35px;
         margin-left: 19px;
-        bottom: 10px;
+        top: 10px;
         position: relative;
         color: black;
         font-weight: 600;

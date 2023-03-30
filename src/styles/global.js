@@ -5,15 +5,13 @@ const GlobalStyles = createGlobalStyle`
 
     *{
         box-sizing: border-box;
-        
+        padding: 0;
+        margin: 0;
     }
     html,
     body {
         font-family: "Gaegu", serif;
-        padding: 0;
-        margin: 0;
         width: 100%;
-        height: 100%;
     }
 
     button {
