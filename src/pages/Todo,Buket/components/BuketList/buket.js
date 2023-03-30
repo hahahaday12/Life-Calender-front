@@ -39,17 +39,20 @@ const BuketList = () => {
   ));
 
   const RemoveBuketList = (idx) => {
-    window.confirm("삭제하시겠습니까?");
+    if(window.confirm("삭제하시겠습니까?")){
     Api.bucketDelete(idx)
     .then((response) => { 
-    if(response.data.message === "successful"){
-      alert('삭제 되었습니다😉');
-      search();
-    } else {
-      alert('다시 선택해 주세요!');
+      if(response.data.message === "successful"){
+        alert('삭제 되었습니다😉');
+        search();
+      } else {
+        console.error(response.data.message);
       }
-    });
-  }
+      });
+    } else {
+    alert('취소 되었습니다')
+    }
+  };
 
   const getChangeBuket = (e) => {
     const{name, value} = e.target;
