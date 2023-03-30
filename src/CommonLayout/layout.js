@@ -9,140 +9,143 @@ import { fontsize } from '../styles/Media/theme';
 import { MediaImg } from '../styles/DetailStyle/CalendarStyle/diary';
 
 const Layout = ({ children }) => {
-        return(
-        <> 
-        <AllBackGround>
-            <LeftContainer>
-                <img alt='logoimg' src= './img/Life Calander_logo.png'/>
-                <Ip>Life <br/> Calendar</Ip>
-                <Sidebar/>
-            </LeftContainer>
-            <HeaderBox>
-                <Usertitle/>
-                <LogoutBox/>
-            </HeaderBox>
-            <div>
-                <div className="content"> {children} </div>
-            </div>
-        </AllBackGround>
-        </>
+  return(
+      <> 
+      <AllBackGround>
+        <LeftContainer>
+          <img alt='logoimg' src= './img/Life Calander_logo.png'/>
+          <Ip>Life <br/> Calendar</Ip>
+          <Sidebar/>
+        </LeftContainer>
+        <HeaderBox>
+          <Usertitle/>
+          <LogoutBox/>
+        </HeaderBox>
+          <div>
+            <div className="content"> {children} </div>
+          </div>
+      </AllBackGround>
+      </>
     )
 };
 export default Layout;
 
 const AllBackGround = styled.div`
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    position: relative;
-    background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  position: relative;
+  background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
 
     ${media.mobileS`
-        width: 125vw;    
-        height: 160vh;
+      width: 125vw;    
+      height: 160vh;
     `}
 
     ${media.tablet`
-        width: 125vw;   
-        height: 930px;
+      width: 125vw;   
+      height: 930px;
     `}
     
     ${media.desktopM`    
-        width: 100vw;   
-        height: 100vh;
+      width: 100vw;   
+      height: 100vh;
     `}
 `
 
 const LeftContainer = styled.div`
-        width: 250px;
-        height: 100%;
-        color: #545454; 
-        background-color: #8D9EFF;
-        position: relative;
+  width: 250px;
+  height: 100%;
+  color: #545454; 
+  background-color: #8D9EFF;
+  position: relative;
     
     & img {
-        width: 80px;
-        height: 80px;
-        display: flex;
-        position: relative;
-        margin: 0 auto;
-        margin-top: 100px;
-        margin-bottom: 40px;
+      width: 80px;
+      height: 80px;
+      display: flex;
+      position: relative;
+      margin: 0 auto;
+      margin-top: 100px;
+      margin-bottom: 40px;
     }
 
     ${media.mobileS`    
-       width: 510px;
-       height: 80px;
+      width: 515px;
+      height: 80px;
 
         & img { 
-        position: absolute;
-        bottom: -30px;
-        left: 40px;
-        width: 60px;
-        height: 60px;
+          position: absolute;
+          bottom: -30px;
+          left: 40px;
+          width: 60px;
+          height: 60px;
         }
     `}
     
     ${media.tablet`   
-       width: 250px;
-       height: 100%;
-
+      width: 250px;
+      height: 100%;
         & img {
-            ${MediaImg}
+          ${MediaImg}
         }
     `}
 
     ${media.desktopM`   
-       width: 250px;
-       height: 100%;
+      width: 250px;
+      height: 100%;
 
         & img {
-                ${MediaImg}
-            }
+          ${MediaImg}
+        }
     `}
 
     ${media.desktopL`
-    width: 250px;
-    height: 100%;
+      width: 250px;
+      height: 100%;
 
-    & img {
+      & img {
         ${MediaImg}
-        }
+      }
     `}
 `
 
 const HeaderBox = styled.div`
-    width: 430px;
-    display: flex;
-    height: 40px;
-    position: absolute;
-    left: 40%;
-    top:40px;
+  width: 430px;
+  display: flex;
+  height: 40px;
+  position: absolute;
+  left: 40%;
+  top:40px;
 
     ${media.mobileS`    
-        top: 100px;
-        left: 2%;
+      top: 100px;
+      left: 2%;
     `}
 
     ${media.tablet`   
-        top: 5%;
-        left: 40%;   
+      top: 5%;
+      left: 40%;   
     `}
 `
 const Ip = styled.p`
-    color: white;
-    font-size: ${fontsize[3]};
-    text-align: center;
-    margin-left: 5px;
+  color: white;
+  font-size: ${fontsize[3]};
+  text-align: center;
+  position: relative;
+  
+  
     
     ${media.mobileS`   
-        width: 70px;
-        height: 50px;
-        margin-left: 150px;
+      width: 70px;
+      margin-left: 150px;
+      margin-top: 15px;
     `}
 
-    ${media.tablet`   
-        margin-left: 80px;
+    ${media.tablet`
+      margin-left: 80px;   
+      text-align: center;
+      position: relative;
     `}
 `
 

@@ -90,22 +90,23 @@ const ColorPallete = styled.ul`
   display: flex;
   gap: 30px;
   font-size: ${fontsize[3]};
-  margin-left: 20px;
+  margin-top: 30px;
 
   ${media.mobileS`    
     width: 100%;
     font-size: ${fontsize[0]};
-    margin-left: 1px;
+    margin-left: 20px;
   `}
   
   ${media.tablet`   
-    margin-left: -17px;
+    margin-left: 17px;
+    top: 10px;
     width: 100%;
     font-size: ${fontsize[3]};
   `}
 
   ${media.desktopM`    
-    margin-left: 20px;
+    margin-left: 50px;
     width: 550px;
   `}
 `;

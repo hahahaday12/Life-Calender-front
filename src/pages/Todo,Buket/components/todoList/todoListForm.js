@@ -236,7 +236,7 @@ const onDragEnd = (result, columns, setColumns) => {
           <TodoWrap key={columnId}> 
             <H2>{columnId}</H2>
             
-            <div className="ScorllBox" style={{ margin: 8}}>
+            <div className="ScorllBox">
               <Droppable droppableId={columnId} key={columnId}>
                 {(provided, snapshot) => {
                   return (
@@ -359,7 +359,6 @@ const TodoInputWrap = styled.div`
     padding-top: 3px;
   }
 `
-
 const TodoInnerText = styled.div`
   color: #7A90E2;
   ${InnerTextStyle }

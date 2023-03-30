@@ -54,73 +54,65 @@
 
 /* 월 타이틀 폰트/위치 조정 */
 .fc .fc-toolbar-title {
-  /* width: 200px;
   position: relative;
-  margin:  auto;
-  text-align: center;
-  align-items: center;
-  font-size: 25px;
-  left: 250px;
-  background-color: antiquewhite; */
-
-  position: relative;
-  left: 150px;
+  left: 266px;
 }
 
 @media screen and (min-width: 375px) and (max-width: 1023px)  {
   .fc .fc-toolbar-title {
     position: relative;
-    left: 150px;  
+    left: 190px;  
   }
 }
 
+
+.fc-prev-button.fc-button.fc-button-primary {
+  display: flex;
+  background-color: white;
+  border: 0;
+  outline: 0;
+  background-color: #BFACE2;
+  right: 470px;
+}
+
+
+.fc-prev-button.fc-button.fc-button-primary:active{
+  background-color: #A084DC;
+}
+
 @media screen and (min-width: 375px) and (max-width: 1023px)  {
-  .fc-button-group {
-  
-  
+  .fc-prev-button.fc-button.fc-button-primary {
+    right: 300px;
+    
+  }
+ }
+
+.fc-next-button.fc-button.fc-button-primary{
+  display: flex;
+  background-color: white;
+  border: 0;
+  outline: 0;
+  background-color: #BFACE2;
+  right: 150px;
+}
+.fc-next-button.fc-button.fc-button-primary:active{
+  background-color: #A084DC;
+}
+
+@media screen and (min-width: 375px) and (max-width: 1023px)  {
+  .fc-next-button.fc-button.fc-button-primary {
+    right: 100px
+    
   }
  }
 
  @media screen and (min-width: 1024px) and (max-width: 1279px)  {
-  .fc-button-group {
-    /* right: 390%;
-    gap: 250%; */
+  .fc-next-button.fc-button.fc-button-primary {
+    right: 130px;
   }
  }
 
-@media screen and (min-width: 1280px) and (max-width: 1440px)  {
-  .fc-button-group {
-    /* right: 420%; */
-  }
- }
 
-.fc-prev-button.fc-button.fc-button-primary {
-  /* display: flex;
-  background-color: white;
-  border: 0;
-  outline: 0; */
-  background-color: tan;
-  right: 350px;
-
-}
-
-.fc-prev-button.fc-button.fc-button-primary:active{
-  /* background-color: white; */
-}
-
-
-.fc-next-button.fc-button.fc-button-primary{
-  /* display: flex;
-  position: relative;
-  background-color: white;
-  border: 0;
-  outline: 0; */
-  background-color: tan;
-  right: 90px;
-}
-.fc-next-button.fc-button.fc-button-primary:active{
-  /* background-color: white; */
-}
 
 .fc-icon.fc-icon-chevron-left{
   /* color: #0e0d0d; */
@@ -131,14 +123,18 @@
 }
 
 .fc-today-button.fc-button.fc-button-primary{
-  /* background-color: rgb(255, 239, 200);
-  position: relative;
-  color: rgb(8, 8, 8);
-  border: 0;
-  outline: 0; */
   position: absolute;
   right: 10px;
+  z-index: 100;
+  background-color: #D989B5;
+  color: white;
+  border: none;
 }
+
+.fc-today-button.fc-button.fc-button-primary:active {
+  background-color: #BA94D1;
+}
+
 
 /* 버튼박스 레이아웃 */
 .btnWrap {

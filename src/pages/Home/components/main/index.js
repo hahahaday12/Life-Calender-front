@@ -59,7 +59,6 @@ const Centerwrap = styled.div`
   height: 700px;
   position: absolute;
   left: 20%;
-  background-color: red;
 
   ${media.mobileS`
     width: 99%;

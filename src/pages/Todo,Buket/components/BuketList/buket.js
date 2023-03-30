@@ -120,7 +120,8 @@ const BuketList = () => {
             />
           </BuketInputWrap>
         </div>
-
+        
+        <div className="BuketScorll" >
           {Viewcontent.map((item) => (
             <Buket>
               <BucketInnerText>
@@ -128,14 +129,15 @@ const BuketList = () => {
               </BucketInnerText>
               <div className="iconBox">
                 <FontAwesomeIcon className="XIcon" 
-                icon={faXmark}
-                onClick={(e) => RemoveBuketList(item._id, e)}
+                  icon={faXmark}
+                  onClick={(e) => RemoveBuketList(item._id, e)}
                 />
-              </div>  
+              </div>   
             </Buket>
           ))}
-    </BuketWhiteBox>
-    </>
+         </div>   
+  </BuketWhiteBox>
+  </>
   )
 };
 export default BuketList;
@@ -156,21 +158,57 @@ const BuketWhiteBox = styled.div`
      top: 60px;
      height: 130px;
     `}
-  }
+  };
   
   & .buketText {
     text-align: center;
     font-size: ${fontsize[2]};
     font-family: "Gaegu", serif;
     color: #FFCCCC;
-  }
+  };
+
+  & .BuketScorll{
+    overflow: auto;
+    background-color:#FAF2F2;
+    height:380px;
+    border-radius:10px;
+
+    ${media.mobileS` 
+     width: 260px;
+     position: absolute;
+     left: 120px;
+     top: 150px;
+     height: 230px;
+    `};
+
+    ${media.tablet`
+      left: 45px;   
+      height:410px;
+    `};
+
+  };
+
+  .BuketScorll::-webkit-scrollbar {
+    width: 3px;  /* 스크롤바의 너비 */
+  };
+
+  .BuketScorll::-webkit-scrollbar-thumb {
+    height: 5px; /* 스크롤바의 길이 */
+    background:#FF9494; /* 스크롤바의 색상 */
+    border-radius: 10px;
+  };
+
+  .BuketScorll::-webkit-scrollbar-track {
+    background: #F3C5C5;
+      /*스크롤바 뒷 배경 색상*/
+  };
 
   ${media.mobileS`  
     width: 500px ;
     left: 1px;
     top: 50px;
     height: 380px;
-  `}
+  `};
     
   ${media.tablet`   
     width: 350px;
@@ -178,11 +216,11 @@ const BuketWhiteBox = styled.div`
     left: 500px;
     position: absolute;
     top: 0px;
-  `}
+  `};
 
   ${media.desktopM`    
     left:700px;
-  `}
+  `};
 `
 const Datebutton = styled.button`
   ${DateStyle}
@@ -191,7 +229,7 @@ const Datebutton = styled.button`
 
   :hover{
     background-color: #FFD4D4;
-  }
+  };
 `
 
 const BuketInputWrap = styled.div`
@@ -201,7 +239,7 @@ const BuketInputWrap = styled.div`
 
   & .faPlus {
     background-color: #FFCCCC;
-  }
+  };
 `
 
 const Buket = styled.div`
@@ -216,15 +254,9 @@ const Buket = styled.div`
   justify-content: space-between;
   border-radius: 15px;
   ${IconStyle}
-
-  ${media.mobileS`    
-    margin-left:100px;
-  `}
-
-  ${media.tablet`   
-    right: 70px;
-  `}
 `
+
+
 const BucketInnerText = styled.div`
   ${ InnerTextStyle }
   color: white;
