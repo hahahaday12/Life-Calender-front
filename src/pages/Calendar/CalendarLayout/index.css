@@ -25,6 +25,7 @@
   background-color: white;
 }
 
+
  @media screen and (min-width: 375px) and (max-width: 1023px)  {
   .fc-theme-standard .fc-scrollgrid {
   background-color: white;
@@ -48,6 +49,7 @@
   }
 }
 
+
 .fc-prev-button.fc-button.fc-button-primary {
   display: flex;
   background-color: white;
@@ -57,15 +59,17 @@
   right: 470px;
 }
 
+
 .fc-prev-button.fc-button.fc-button-primary:active{
   background-color: #A084DC;
 }
 
 @media screen and (min-width: 375px) and (max-width: 1023px)  {
   .fc-prev-button.fc-button.fc-button-primary {
-    right: 300px;  
+    right: 300px;
+    
   }
- };
+ }
 
 .fc-next-button.fc-button.fc-button-primary{
   display: flex;
@@ -74,106 +78,107 @@
   outline: 0;
   background-color: #BFACE2;
   right: 150px;
-};
+}
 .fc-next-button.fc-button.fc-button-primary:active{
   background-color: #A084DC;
-};
+}
 
 @media screen and (min-width: 375px) and (max-width: 1023px)  {
   .fc-next-button.fc-button.fc-button-primary {
     right: 100px
     
-  };
- };
+  }
+ }
 
  @media screen and (min-width: 1024px) and (max-width: 1279px)  {
   .fc-next-button.fc-button.fc-button-primary {
     right: 130px;
-  };
- };
+  }
+ }
+
 
 .fc-today-button.fc-button.fc-button-primary{
   position: absolute;
   right: 10px;
   z-index: 100;
-  background-color: #D989B5;
+  background-color: #B2A4FF;
   color: white;
   border: none;
-};
+}
 
 .fc-today-button.fc-button.fc-button-primary:active {
   background-color: #BA94D1;
-};
+}
 
 /* 날짜 폰트 */
 .fc .fc-daygrid-day-number {
   font-size: 13px;
   font-weight: 400;
   margin-left: 10px;
-};
+}
 
 .react-datepicker__day-name{
   color: red;
-};
+}
 
 /* 일요일 날짜 빨간색 */
 .fc-day-sun {
   color: red;
-};
+}
 
 /* 토요일 날짜 파란색 */
 .fc-day-sat {
   color: blue;
-};
+}
 
 /* 요일 행 */
 .fc .fc-scrollgrid-section table {
   height: 50px;
-};
+}
 
 .fc-col-header {
   border-bottom: 1.5px solid rgb(0, 0, 0);
-};
+}
 
 .fc .fc-scrollgrid-section-header > *, .fc .fc-scrollgrid-section-footer > * {
   padding-bottom: 20px;
-};
+}
 
 .fc th, .fc td {
   vertical-align: middle;
-};
+}
 
 
 /* border값 초기화 */
 .fc-theme-standard th, .fc-theme-standard td {
   border: 0px;
-};
+}
 
 .fc-theme-standard .fc-scrollgrid {
   border: 0px;
-};
+}
 
 /* daygrid 높이 */
 .fc .fc-daygrid-day-frame {
   height: 85px;
   overflow: hidden;
   margin: auto;
-};
+}
 
 /* daygrid flex 초기화*/
 .fc .fc-daygrid-day-top {
   display: block;
-};
+}
 
 /* scrollbar 초기화 */
 .fc .fc-scroller-liquid-absolute {
   position: relative;
-};
+}
 
 .fc-daygrid-dot-event:hover,
   .fc-daygrid-dot-event.fc-event-mirror{
     background: none;
-  };
+  }
 
 .fc-daygrid-event-dot {
   display: flex;
@@ -182,19 +187,18 @@
   border-width: 8px;
   border-radius: 50px;
   left: 30px;
-};
+}
 
 div > .fc-daygrid-day-frame.fc-scrollgrid-sync-inner{
  height: max-content;
  display: flex;
  position: relative;
  overflow: hidden;
-};
-
+} 
 .fc-event-time{
   display: none;
-};
+}
 
 .fc-event-title{
   display: none;
-};
+}
