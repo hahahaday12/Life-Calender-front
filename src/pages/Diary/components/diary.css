@@ -1,16 +1,13 @@
 .react-datepicker__header{
-  background-color: #B1B2FF;
-  
+  background-color: #B1B2FF; 
 }
 
 .react-datepicker-popper[data-placement^=bottom] .react-datepicker__triangle::after{
-  border-bottom-color: #B1B2FF;
-  
+  border-bottom-color: #B1B2FF;  
 }
 
 .react-datepicker__day--selected{
-  background-color: #AAC4FF;
-  
+  background-color: #AAC4FF;  
 }
 
 .react-datepicker__month-container{
