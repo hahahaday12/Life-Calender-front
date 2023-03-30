@@ -168,11 +168,7 @@ const DiaryBoxContainer = styled.div`
     justify-content: center;
     align-items: center;
     font-family: "Gaegu", serif;
-
-    ${media.mobileS`    
     
-    `}
-
     ${media.tablet`   
       width: 150px;
     `}

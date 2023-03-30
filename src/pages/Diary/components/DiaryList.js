@@ -68,6 +68,7 @@ const DiaryForm = () => {
           listData[i].date = UTCchangeKST(response.data.data[i].date)
       }    
       setData(listData);
+      defaultSetting();
     })
   };
 
@@ -115,13 +116,7 @@ const DiaryForm = () => {
       Api.diaryPatch(ViewData).then((response) => {
         if(response.data.message === "successful"){
           search()
-          setViewData({
-            id:""
-            ,title:""
-            ,content:""
-            ,date:new Date()
-            ,color:"#5800FF"
-          })
+          defaultSetting()
         } else {
           alert("system 오류 입니다. 문의주세요.", response.data.message);
         }
@@ -160,14 +155,8 @@ const DiaryForm = () => {
 
   const ResetBtnClick = () => {
     if(window.confirm('처음으로 돌아가시겠습니까?')){
-      setViewData({
-       id:""
-      ,title:""
-      ,content:""
-      ,date:new Date()
-      ,color: "#5800FF"
-    })
-    }
+      defaultSetting()
+    };
   };
 
   const updateList = (newlist) => {
