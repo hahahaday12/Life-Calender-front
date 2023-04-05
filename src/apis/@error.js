@@ -9,6 +9,10 @@ class ApiCustomError extends Error {
       Error.captureStackTrace(this, ApiCustomError);
     }
 
+    if (status === 400) {
+      this.message = '이미 존재하는 아이디입니다.';
+    }
+
     if (status === 403) {
       TokenRepository.removeToken();
       window.location.href = '/';
