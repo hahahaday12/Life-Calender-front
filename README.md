@@ -403,7 +403,7 @@ export const userState = atom({
 ![KakaoTalk_20230331_232921236](https://user-images.githubusercontent.com/101441685/229549813-378e1987-21cf-46e4-a378-8f00193a08b6.png)
 
 
-1차 수정 2023-04-05
+1차 수정 2023-04-05<br/>
 -> Life-Clendar 오타 수정 완료 <br/>
 -> 이메일 정규식 수정 완료 <br/>
 -> 회원가입 조건 오류 수정 완료 <br/>
