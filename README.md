@@ -404,8 +404,8 @@ export const userState = atom({
 
 
 1차 수정 2023-04-05
--> Life-Clendar 오타 수정 완료 
--> 이메일 정규식 수정 완료 
--> 회원가입 조건 오류 수정 완료 
--> input 입력창 간격 조절 완료 
+-> Life-Clendar 오타 수정 완료 <br/>
+-> 이메일 정규식 수정 완료 <br/>
+-> 회원가입 조건 오류 수정 완료 <br/>
+-> input 입력창 간격 조절 완료 <br/>
 
