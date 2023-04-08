@@ -6,6 +6,7 @@ import TwoPage from './pages/Join/index'
 import ThirdPage from './pages/Calendar/index';
 import Fourpage from './pages/Todo,Buket/index';
 import Fivepage from './pages/Diary/index';
+import Error404 from './pages/404';
 
 function App() {
 
@@ -29,6 +30,7 @@ function App() {
           <Route path="/fivepage" element={
             <PrivateRoute component={<Fivepage/>} />
           }/>
+          <Route path="/*" element={<Error404 />} /> 
         </Routes>
       </RecoilRoot>
       </>
