@@ -46,6 +46,8 @@
     "set-tz": "^0.2.0",
     "slick-carousel": "^1.8.1",
     "styled-components": "^5.3.6",
+    "sweetalert": "^2.1.2",
+    "sweetalert2": "^11.7.3",
     "web-vitals": "^2.1.4",
     "yup": "^0.32.11"
   },
