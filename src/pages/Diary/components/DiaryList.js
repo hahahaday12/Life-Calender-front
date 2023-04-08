@@ -1,4 +1,3 @@
-
 import axios from 'axios';
 import DatePicker from "react-datepicker";
 import Api from "../../../apis/Api";
@@ -15,13 +14,15 @@ import { recoilColorState } from "../../../recoil/colorState";
 import { useRecoilState } from "recoil";
 import { media } from "../../../styles/Media/media";
 import './diary.css'
+import { ShowAlert, ShowConfirm } from '../../alert';
 
 const DiaryForm = () => {
+
   const [recoilColor, setRecoilColor] = useRecoilState(recoilColorState);
   const defaultColor = { ...recoilColor };
   const [colorPeeker, setColorPeeker ] = useState(defaultColor.color);
   const [ViewData, setViewData] = useState({
-     id:""
+    id:""
     ,title:""
     ,content:""
     ,date: new Date()
@@ -126,17 +127,23 @@ const DiaryForm = () => {
     }
   }
   const create = () => {
-    
+    ShowConfirm('다이어리를 등록 하시겠습니까?', "info").then((isConfirmed) => {
+      if(isConfirmed){
+        Api.diaryPost(ViewData).then((response) => {
+          ShowAlert("다이어리가 등록 되었습니다😊", "success", "확인")
+            defaultSetting();
+            search();
+        })
+      }else{
+        ShowAlert("취소 되었습니다.", "info")
+      }
+    });
 
-    if(window.confirm('다이어리를 등록 하시겠습니까?')===true){
-      Api.diaryPost(ViewData).then((response) => {
-          alert("다이어리가 등록 되었습니다😊")
-          defaultSetting();
-          search();
-      })
-    } else {
-    alert('취소 하였습니다.')
-    }
+    // if(window.confirm('다이어리를 등록 하시겠습니까?')===true){
+      
+    // } else {
+    // alert('취소 하였습니다.')
+    // }
   }
   const submit = () => {
     // eslint-disable-next-line no-mixed-operators
@@ -154,9 +161,19 @@ const DiaryForm = () => {
   };
 
   const ResetBtnClick = () => {
+    ShowConfirm('처음으로 돌아가시겠습니까?', "info").then((isConfirmed) => {
+      if(isConfirmed){
+        defaultSetting()
+      }else{
+        return false;
+      }
+    });
+    
+    /*
     if(window.confirm('처음으로 돌아가시겠습니까?')){
       defaultSetting()
     };
+    */
   };
 
   const updateList = (newlist) => {
