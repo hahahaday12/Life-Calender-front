@@ -53,14 +53,14 @@ function Sliderr(props) {
               icon={faXmark}
               onClick={(e) => Removediary(item._id, e)}/>
           </div>
-          <div 
-            className="titleBox"
-            style={{backgroundColor: item.color, fontSize:"20px"}}
+          <TitleContainer style={{backgroundColor: item.color, fontSize:"20px"}}
             onClick={() => Viewdiary(item)}>
+          <div className="titleBox">
             <div>
               {item.title}
             </div>
           </div>
+          </TitleContainer>
         </div>
       </DiaryBoxContainer>
     ));
@@ -158,13 +158,23 @@ const DiaryBoxContainer = styled.div`
     }
   }
   
+`
+const TitleContainer = styled.div`
+  width: 190px;
+  height: 55px;
+  margin: 0 auto;
+  border-radius: 0 0 10px 10px;
+  background-Color:green;
+  position:relative;
+  align-items: center;
+
   & .titleBox {
-    width: 190px;
+    width: 150px;
     height: 55px;
+    overflow: hidden;
     margin: 0 auto;
-    border-radius: 0 0 10px 10px;
     color: white;
-    display: flex;
+     display: flex;
     justify-content: center;
     align-items: center;
     font-family: "Gaegu", serif;
@@ -174,7 +184,15 @@ const DiaryBoxContainer = styled.div`
     `}
 
     ${media.desktopM`    
-      width: 190px;
+      width: 150px;
     `}
   }
+
+  ${media.tablet`   
+      width: 150px;
+  `}
+
+  ${media.desktopM`    
+      width: 190px;
+  `}  
 `
