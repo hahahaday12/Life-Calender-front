@@ -6,7 +6,7 @@ const LogoIner = () => {
     return(
         <>
             <Img alt='logoimg' src='./img/Life Calander_logo.png'/>
-            <P>Life Clendar</P>
+            <P>Life Calendar</P>
         </>
     )
 }
