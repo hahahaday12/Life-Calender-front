@@ -52,7 +52,7 @@ const DiaryForm = () => {
       color:tmpColor.color,
       date:defaultDate
     })
-  },[recoilColor] )
+  },[recoilColor])
 
   const search = (params) => {
     let date = null;
@@ -113,24 +113,27 @@ const DiaryForm = () => {
   };
 
   const update = () => {
-    if(window.confirm('수정하시겠습니까?')){
-      Api.diaryPatch(ViewData).then((response) => {
-        if(response.data.message === "successful"){
-          search()
-          defaultSetting()
-        } else {
-          alert("system 오류 입니다. 문의주세요.", response.data.message);
+    ShowConfirm("수정하시겠습니까?", "info").then((isConfirmed) => {
+      if(window.confirm('수정하시겠습니까?')){
+        Api.diaryPatch(ViewData).then((response) => {
+          if(response.data.message === "successful"){
+            search()
+            defaultSetting()
+          } else {
+          ShowAlert("system 오류 입니다. 문의주세요.", response.data.message);
         }
       })
     } else {
-      alert("취소 되었습니다.")
+      ShowAlert("취소 되었습니다.")
     }
-  }
+  })
+};
+
   const create = () => {
     ShowConfirm('다이어리를 등록 하시겠습니까?', "info").then((isConfirmed) => {
       if(isConfirmed){
         Api.diaryPost(ViewData).then((response) => {
-          ShowAlert("다이어리가 등록 되었습니다😊", "success", "확인")
+          ShowAlert("등록 완료😊", "success", "확인")
             defaultSetting();
             search();
         })
@@ -138,19 +141,13 @@ const DiaryForm = () => {
         ShowAlert("취소 되었습니다.", "info")
       }
     });
+  };
 
-    // if(window.confirm('다이어리를 등록 하시겠습니까?')===true){
-      
-    // } else {
-    // alert('취소 하였습니다.')
-    // }
-  }
   const submit = () => {
-    // eslint-disable-next-line no-mixed-operators
     if(ViewData.title === '' || ViewData.title === " "
       || ViewData.content === '' || ViewData.content === " "
     ){
-      alert("제목과 내용은 필수 입니다.");
+      ShowAlert("제목과 내용은 필수 입니다.", "warning");
       return false;
     }
     if(ViewData.id === ""){ 
@@ -168,17 +165,11 @@ const DiaryForm = () => {
         return false;
       }
     });
-    
-    /*
-    if(window.confirm('처음으로 돌아가시겠습니까?')){
-      defaultSetting()
-    };
-    */
   };
 
   const updateList = (newlist) => {
     setViewData(newlist)
-  }
+  };
 
   const handleEnter = (e) => {
     if (e.key === 'Enter') {
@@ -186,7 +177,7 @@ const DiaryForm = () => {
         submit();
       }
     }
-  }
+  };
 
   return (
     <>

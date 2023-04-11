@@ -8,6 +8,7 @@ import { DateStyle} from '../../../../styles/Common/CommonStyle';
 import { media } from "../../../../styles/Media/media";
 import { BoxSize, InputWrapStyle, InnerTextStyle, IconStyle } from '../../../../styles/DetailStyle/ListStyle/common/common';
 import { fontsize } from '../../../../styles/Media/theme';
+import { ShowAlert, ShowConfirm } from '../../../alert';
 
 const BuketList = () => {
   const [Viewcontent, setViewcontent] = useState([]);
@@ -39,19 +40,22 @@ const BuketList = () => {
   ));
 
   const RemoveBuketList = (idx) => {
-    if(window.confirm("삭제하시겠습니까?")){
-    Api.bucketDelete(idx)
-    .then((response) => { 
-      if(response.data.message === "successful"){
-        alert('삭제 되었습니다😉');
-        search();
+    ShowConfirm("삭제하시겠습니까?", "info").then((isConfirmed) => {
+      if(isConfirmed){
+        Api.bucketDelete(idx)
+        .then((response) => { 
+          if(response.data.message === "successful"){
+            ShowAlert("삭제 되었습니다", "success");
+            search();
+          } else {
+            ShowAlert("삭제 실패","error");
+          }
+        });
       } else {
-        console.error(response.data.message);
+        ShowAlert("다시 선택해주세요","info");
+        return false;
       }
-      });
-    } else {
-    alert('취소 되었습니다')
-    }
+    });
   };
 
   const getChangeBuket = (e) => {
@@ -63,17 +67,17 @@ const BuketList = () => {
   };
 
   const onClickBucket = () => {
-    if(ViewData.content === '' || ViewData.content === " "){
-      alert("공백으로 등록할수없습니다.");
+    if(ViewData.content === "" || ViewData.content === ""|| ViewData.content === undefined){
+      ShowAlert("공백으로 등록할수없습니다.", "info");
       return false;
     }
     Api.buketPost(ViewData)
     .then((response) => {
-      alert('등록 완료😊');
-    setViewData({
-      content:""
-      ,date:new Date()
-    })
+      ShowAlert("등록 완료😊", "success");
+      setViewData({
+        content:""
+        ,date:new Date()
+      })
       search();
     })
   };
@@ -135,9 +139,9 @@ const BuketList = () => {
               </div>   
             </Buket>
           ))}
-         </div>   
-  </BuketWhiteBox>
-  </>
+        </div>   
+    </BuketWhiteBox>
+    </>
   )
 };
 export default BuketList;

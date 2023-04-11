@@ -12,6 +12,7 @@ import  {TodoListAllWrap, TodoWrap, TodoListBox, H2, TodooContainer}  from '../.
 import Api from '../../../../apis/Api';
 import { media } from '../../../../styles/Media/media';
 import { fontsize } from '../../../../styles/Media/theme';
+import { ShowAlert, ShowConfirm} from '../../../alert';
 
 const TodoListForm = () => {
   const [ ,setBtnStatus] = useState(false);
@@ -83,19 +84,22 @@ const TodoListForm = () => {
 };
 
   const RemovetodoList = (idx) => {
-    if(window.confirm("삭제하시겠습니까?")){
-      Api.todoDelet(idx)
+    ShowConfirm('삭제하시겠습니까?', "info").then((isConfirmed) => {
+      if(window.confirm("삭제하시겠습니까?")){
+        Api.todoDelet(idx)
       .then((response) => { 
-      if(response.data.message === "successful"){
-        alert('삭제 되었습니다😉');
-        Todo(Todolist.date);
-      } else {
-        console.error(response.data.message);
-      }
+        if(response.data.message === "successful"){
+          ShowAlert("삭제 되었습니다😉", "success");
+          Todo(Todolist.date);
+        } else {
+          ShowAlert("삭제 실패","error");
+        }
       });
-    } else {
-      alert("취소 되었습니다")
-    }
+      } else {
+        ShowAlert("다시 선택해주세요", "info");
+        return false;
+      }
+    });
   };
 
   const DatePickChange = (date) => {
@@ -107,7 +111,6 @@ const TodoListForm = () => {
   };
 
   const ChangeStatus = (id, status) => {
-    //Api.todoPatch(id,status)
     axios.patch(API_URL+ '/todo/' + id,{
       status : status
     }).then((response) => {
@@ -117,12 +120,12 @@ const TodoListForm = () => {
 
   const onClickTodo = () => {
     if(Todolist.content === '' || Todolist.content === " "){
-      alert("공백으로 등록할수없습니다.");
+      ShowAlert("공백으로 등록할수없습니다." , "warning");
       return false;
     }
     Api.todoPost(Todolist)
-  .then((response) => {
-      alert('등록 되었습니다.😊');
+    .then((response) => {
+    ShowAlert("등록 완료.😊" , "success");
       setTodoList({
         content:""
         ,date:new Date(Todolist.date)
@@ -145,9 +148,9 @@ const TodoListForm = () => {
   });
   const [columns, setColumns] = useState(taskStatus);
 
-const onDragEnd = (result, columns, setColumns) => {
+  const onDragEnd = (result, columns, setColumns) => {
    if (!result.destination) return;
-  const { source, destination } = result;
+   const { source, destination } = result;
   
   //상태값이 변경되었을때
   if (source.droppableId !== destination.droppableId) {

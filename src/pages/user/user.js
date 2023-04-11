@@ -4,7 +4,7 @@ import { useRecoilState} from 'recoil';
 import UserName from '../../CommonLayout/user'
 import {userState} from '../../recoil/atoms/user';
 import TokenRepository from '../../repository/TokenRepository';
-
+import { ShowAlert } from '../alert';
 
 const Usertitle = () => {
   const [users, setUsers] = useRecoilState(userState);
@@ -12,7 +12,7 @@ const Usertitle = () => {
     .then(response => {
       setUsers(response.data.data.user.name);
     },(error) => {
-      alert("system 오류입니다. 문의주세요.", error)
+      ShowAlert("system 오류입니다. 문의주세요.", "error")
       TokenRepository.removeToken();
     });
 

@@ -6,6 +6,8 @@ import AuthService from '../../../service/auth.service.js';
 import { RegisterButton } from '../../../styles/DetailStyle/JoinStyle/JoinStyle.js';
 import { fontsize } from '../../../styles/Media/theme.js';
 import { ErrorHandle } from '../../../apis/@core.js';
+import { ShowAlert } from '../../../pages/alert.js';
+
 const Joininput = ( ) =>  {
 
 const navigate = useNavigate();
@@ -35,12 +37,12 @@ const navigate = useNavigate();
 
   const onSignUpSumit = () => { 
       if(email === undefined || email === ""  || email === null ){
-          alert("아이디 입력해주세요.");
+        ShowAlert("아이디 입력해주세요.", "warning");
           return false;
       }
 
       if( isEmail === false || isPassword === false ){
-        alert("값이 잘못 되었습니다. 다시 입력해주세요");
+        ShowAlert("값이 잘못 되었습니다. 다시 입력해주세요", "warning");
         return false;
       } 
 
@@ -49,19 +51,19 @@ const navigate = useNavigate();
           .then((res) => {
             console.log(res + 'sssss')
             if (res.status === 201) {
-              alert('가입되었습니다.')
+              ShowAlert("가입되었습니다.", "success", "확인")
               navigate("/")       
             }
           }).catch(error => {
             const err = ErrorHandle(error);
-            alert(err);
+            ShowAlert(err);
             // if(error.request.status === 400){
             //   let msg = JSON.parse(error.request.responseText);
             //   alert(msg.message);
             // }
           })
       } catch (err) {
-        alert("system 오류입니다. 문의주세요.", err)
+        ShowAlert("system 오류입니다. 문의주세요.", "error")
       }
   }
 
@@ -77,7 +79,7 @@ const navigate = useNavigate();
   }, [])
 
   const onChangeEmail = useCallback((e) => {
-  const emails = e.target.value
+    const emails = e.target.value
     setUserEmail(emails)
     if (emailCheck(emails)) {
       setEmailMessage('올바른 이메일 형식이에요 : )')
@@ -86,7 +88,7 @@ const navigate = useNavigate();
       setEmailMessage('이메일 형식이 틀렸습니다')
       setIsEmail(false)
     }
-  }, [])
+  },[])
 
   const onChangePassword = useCallback((e) => {
     const passwordCurrent = e.target.value

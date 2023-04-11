@@ -8,9 +8,10 @@ import { InnerPlaceHolder } from '../../../styles/Common/CommonStyle';
 import { fontsize } from '../../../styles/Media/theme';
 import {ShowAlert} from '../../../pages/alert';
 import { faLastfmSquare } from '@fortawesome/free-brands-svg-icons';
-//import Swal from "sweetalert2";
+
 
 const LoginInput = () => {
+
   const navigate = useNavigate(); 
 
   const [{ email, password }, onChangeForm] = useInputs({
@@ -28,7 +29,6 @@ const LoginInput = () => {
 
    const  HandleLogin  = async () => {
     if(email === undefined || email === ""  || email === null){
-      //alert("아이디 입력해주세요.");
       ShowAlert('아이디 입력해주세요.', "warning", "확인")
       return false;
     }
@@ -36,27 +36,23 @@ const LoginInput = () => {
     try {
         await AuthService.Login({ id:email, password })
         .then((res) => {
-        if (res.status === 201) {
-          TokenRepository.setToken(res);
-
-          if (TokenRepository.getToken()) {
-
-        ShowAlert('로그인되었습니다.', "success", "확인").then((isConfirmed) => {
-            if(isConfirmed){
-              navigate('/thirdpage')
+          if (res.status === 201) {
+            TokenRepository.setToken(res);
+            if (TokenRepository.getToken()) {
+              ShowAlert('로그인되었습니다.', "success", "확인").then((isConfirmed) => {
+                if(isConfirmed){
+                  navigate('/thirdpage')
+                }
+              });
             }
-        });
-            //Swal.fire('로그인 성공!','success')
           }
-        }
         })
     } catch (error) {
-        ShowAlert('로그인 실패했습니다.', "warning", "확인").then((isConfirmed) => {
-          return false;
-        });
-        //alert();
-      };
+      ShowAlert('로그인 실패했습니다.', "warning", "확인").then((isConfirmed) => {
+        return false;
+      });
     };
+  };
 
     return(
         <LoginForm>
