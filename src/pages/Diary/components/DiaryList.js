@@ -1,20 +1,21 @@
+import './diary.css'
 import axios from 'axios';
-import DatePicker from "react-datepicker";
 import Api from "../../../apis/Api";
-import Sliderr from "../../Diary/components/slider";
 import styled from "styled-components";
-import "react-datepicker/dist/react-datepicker.css";
+import DatePicker from "react-datepicker";
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {  faCircleArrowLeft, faCircleCheck } from "@fortawesome/free-solid-svg-icons"
-import { useState, forwardRef, useEffect } from 'react';
-import {API_URL} from '../../../Common/Common'
-import { recoilColorState } from "../../../recoil/colorState";
+import "react-datepicker/dist/react-datepicker.css";
+import Sliderr from "../../Diary/components/slider";
+import { API_URL } from '../../../Common/Common'
 import { useRecoilState } from "recoil";
+import { useState, forwardRef, useEffect } from 'react';
 import { media } from "../../../styles/Media/media";
-import './diary.css'
 import { ShowAlert, ShowConfirm } from '../../alert';
+import { recoilColorState } from "../../../recoil/colorState";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSyncAlt, faCircleCheck } from "@fortawesome/free-solid-svg-icons"
+
 
 const DiaryForm = () => {
 
@@ -114,20 +115,20 @@ const DiaryForm = () => {
 
   const update = () => {
     ShowConfirm("수정하시겠습니까?", "info").then((isConfirmed) => {
-      if(window.confirm('수정하시겠습니까?')){
+      if(isConfirmed){
         Api.diaryPatch(ViewData).then((response) => {
           if(response.data.message === "successful"){
             search()
             defaultSetting()
           } else {
-          ShowAlert("system 오류 입니다. 문의주세요.", response.data.message);
-        }
-      })
-    } else {
-      ShowAlert("취소 되었습니다.")
-    }
-  })
-};
+          ShowAlert("system 오류 입니다. 문의주세요.", "error");
+          }
+        })
+      } else {
+        ShowAlert("취소 되었습니다.", "info")
+      }
+    })
+  };
 
   const create = () => {
     ShowConfirm('다이어리를 등록 하시겠습니까?', "info").then((isConfirmed) => {
@@ -214,7 +215,7 @@ const DiaryForm = () => {
           <FontAwesomeIcon
             type='button'
             className="beforeIcon" 
-            icon={faCircleArrowLeft}
+            icon={faSyncAlt}
             onClick={ResetBtnClick}
           />
         </PostTitle>
@@ -222,7 +223,7 @@ const DiaryForm = () => {
             <PostForm>
               <textarea
                 type="text"
-                placeholder="일기내용을 작성해주세요"
+                placeholder="일기내용을 작성해주세요. 줄바꿈은 shift + Enter"
                 onChange={getChangeValue}
                 name='content'
                 value={content}
