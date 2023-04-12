@@ -1,12 +1,12 @@
-//import TokenRepository from '../../../repository/TokenRepository';
 import Swal from "sweetalert2";
 
 export function ShowConfirm(text, icon){
+
   const button = document.querySelector('button');
   button.disabled = true;
   return Swal.fire({
     text: text,
-    icon : icon,
+    icon : icon || 'info',
     showCancelButton: true,
     allowOutsideClick : false,
     confirmButtonText: '확인',
@@ -19,24 +19,33 @@ export function ShowConfirm(text, icon){
 
 export function ShowAlert(text, icon, confirmText){
 
-  const button = document.querySelector('button');
-  button.disabled = true;
+  try {
+    const button = document.querySelector('button');
+  
 
-  const swalConfig = {
-    text: text,
-    icon : icon,
-    allowOutsideClick : false
-  }
+    const swalConfig = {
+      text: text,
+      icon : icon,
+      allowOutsideClick : false
+    }
 
-  if(confirmText){
-    swalConfig.confirmButtonText = confirmText;
-  }else{
-    swalConfig.allowOutsideClick = true;
-    swalConfig.showConfirmButton = false;
-  }
+    if(confirmText){
+      swalConfig.confirmButtonText = confirmText;
+      if(button != null){
+        button.disabled = true;
+      }
+    }else{
+      swalConfig.allowOutsideClick = true;
+      swalConfig.showConfirmButton = false;
+    }
 
   return Swal.fire(swalConfig).then((result) => {
-    button.disabled = false;
+    if(button != null){
+      button.disabled = false;
+    }
     return result.isConfirmed;
   });
-}
+  } catch (error) { 
+    console.error(error);
+  } 
+};
