@@ -29,7 +29,12 @@ const LoginInput = () => {
 
    const  HandleLogin  = async () => {
     if(email === undefined || email === ""  || email === null){
-      ShowAlert('아이디 입력해주세요.', "warning", "확인")
+      ShowAlert('이메일을 입력해주세요.', "warning", "확인")
+      return false;
+    }
+
+    if(password === undefined || password === ""  || password === null){
+      ShowAlert('비밀번호를 입력해주세요.', "warning", "확인")
       return false;
     }
     
@@ -91,14 +96,18 @@ const LoginForm = styled.div`
     margin-top: 50px;
 
   
-   & input {
-    width: 80%;
-    height: 45px;
-    border: none;
-    font-size: ${fontsize[0]};
-    position: absolute;
-    left: 25px;
-  }
+    & input {
+      width: 80%;
+      height: 45px;
+      border: none;
+      font-size: ${fontsize[0]};
+      position: absolute;
+      left: 25px;
+    
+      :-webkit-autofill {
+        -webkit-box-shadow: 0 0 0 1000px #ffff inset;
+      }
+    }
 
   & input::placeholder {
     ${InnerPlaceHolder}
