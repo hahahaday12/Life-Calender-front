@@ -9,7 +9,7 @@ export const emailCheck = (mail) =>{
 
 //패스워드 체크 여부
 const PwExp = 
-  /^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[A-Z])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+]).{8,16}$/;
+  /^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[A-Z])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+]).{8}/;
 
   export const PwCheck = (password) => {
     return PwExp.test(password) ? true : false;
