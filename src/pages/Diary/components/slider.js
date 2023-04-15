@@ -58,7 +58,7 @@ function Sliderr(props) {
   };
 
   const renderDiary = () => props.list && props.list.map((item) => (
-        <DiaryBoxContainer key={item._id}>
+      <DiaryBoxContainer key={item._id}>
         <div className="diaryWrap">
           <div className="dateBox" 
             style={{color: item.color, borderColor: item.color}}>
@@ -73,21 +73,19 @@ function Sliderr(props) {
             onClick={() => Viewdiary(item)}
             onMouseEnter={() => {handleTitleHover(item._id)}}
             onMouseLeave={handleTitleLeave}>
-  
-          <div className="titleBox">
-            <div>
-              {item.title}
+            
+            <div className="titleBox">
+              <div>
+                {item.title}
+              </div>
             </div>
-            {/* <HoverText isVisible={hoverTitle === item.title}>{item.content}</HoverText>   */}
-          </div>
-          <HoverText isVisible={hoverTitle === item._id}
-          style={{backgroundColor: item.color}}
-          >
-          <HoverBox>{item.content}</HoverBox> 
-          </HoverText>
+            <HoverText isVisible={hoverTitle === item._id}
+              style={{backgroundColor: item.color}}>
+              <HoverBox>{item.content}</HoverBox> 
+            </HoverText>
+
           </TitleContainer>
-          
-      
+
         </div>
       </DiaryBoxContainer>
     ));
@@ -242,11 +240,6 @@ const HoverText = styled.div`
   padding-bottom: 50px;
   border-radius: 10px;
   border: 1px solid #ccc;
-  /* 글자수 넘어가면 ...으로 대체하기 */
-  /* white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis; */
-  /* HoverText가 보여지도록 함 */
   display: ${({ isVisible }) => (isVisible ? 'block' : 'none')};
   border: solid 2px white;
   color: #ffff;
@@ -254,10 +247,7 @@ const HoverText = styled.div`
   &:hover{
     transform: translate(1px, -20px);
     transition: 0.7s;
-    z-index: 200;
-    opacity: 1;
-    box-shadow: #ccc;
-  }
+  } 
 `
 const HoverBox = styled.div`
   width: 150px;
