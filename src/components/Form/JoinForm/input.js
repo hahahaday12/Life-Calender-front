@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import {  PwCheck, emailCheck} from '../../../Common/Common.js'
 import AuthService from '../../../service/auth.service.js';
@@ -35,21 +35,26 @@ const navigate = useNavigate();
     }
   }
 
-  const onSignUpSumit = () => { 
-      if(email === undefined || email === ""  || email === null ){
-        ShowAlert("아이디 입력해주세요.", "warning");
-          return false;
-      }
+  useEffect(() => {
+    if (confirmPassword) {
+      onChangePasswordConfirm(password, confirmPassword, setPasswordConfirmMessage, setIsPasswordConfirm);
+    }
+  }, [password, confirmPassword]);
 
-      if( isEmail === false || isPassword === false ){
-        ShowAlert("값이 잘못 되었습니다. 다시 입력해주세요", "warning");
-        return false;
-      } 
+  const onSignUpSumit = () => { 
+    if(email === undefined || email === ""  || email === null ){
+      ShowAlert("이메일 입력해주세요.", "warning");
+      return false;
+    }
+
+    if( isEmail === false || isPassword === false || isPasswordConfirm === false){
+      ShowAlert("값이 잘못 되었습니다. 다시 입력해주세요", "warning");
+      return false;
+    } 
 
       try {
         AuthService.signup({id:email, password, name })
           .then((res) => {
-            console.log(res + 'sssss')
             if (res.status === 201) {
               ShowAlert("가입되었습니다.", "success", "확인")
               navigate("/")       
@@ -57,15 +62,11 @@ const navigate = useNavigate();
           }).catch(error => {
             const err = ErrorHandle(error);
             ShowAlert(err);
-            // if(error.request.status === 400){
-            //   let msg = JSON.parse(error.request.responseText);
-            //   alert(msg.message);
-            // }
           })
       } catch (err) {
         ShowAlert("system 오류입니다. 문의주세요.", "error")
       }
-  }
+  };
 
   const onChangeName = useCallback((e) => {
       setUserName(e.target.value)
@@ -95,28 +96,29 @@ const navigate = useNavigate();
     setUserPassword(passwordCurrent)
 
     if (!PwCheck(passwordCurrent)) {
-      setPasswordMessage('숫자+영문자+특수문자 조합으로 8자리 이상 입력해주세요.')
+      setPasswordMessage('숫자+영문자+특수문자 조합으로8자리 이상 입력해주세요.')
       setIsPassword(false)
     } else {
       setPasswordMessage('안전한 비밀번호에요 : )')
       setIsPassword(true)
+    } 
+  }, [confirmPassword])
+
+  const onChangePasswordConfirm = (password, confirmPassword, setPasswordConfirmMessage, setIsPasswordConfirm) => {
+    if (password === confirmPassword) {
+      setPasswordConfirmMessage('비밀번호를 똑같이 입력했어요 : )');
+      setIsPasswordConfirm(true);
+    } else {
+      setPasswordConfirmMessage('비밀번호가 틀립니다. 다시 입력해주세요.');
+      setIsPasswordConfirm(false);
     }
-  }, [])
+  };
 
-  const onChangePasswordConfirm = useCallback((e) => {
-      const passwordConfirmCurrent = e.target.value
-      setConfirmPassword(passwordConfirmCurrent)
-
-      if (password === passwordConfirmCurrent) {
-        setPasswordConfirmMessage('비밀번호를 똑같이 입력했어요 : )')
-        setIsPasswordConfirm(true)
-      } else {
-        setPasswordConfirmMessage('비밀번호가 틀립니다. 다시 입력해주세요.')
-        setIsPasswordConfirm(false)
-      }
-    },
-    [password]
-  )
+  const onPasswordConfirmChange = useCallback((e) => {
+    const passwordConfirmCurrent = e.target.value;
+    setConfirmPassword(passwordConfirmCurrent);
+    onChangePasswordConfirm(password, passwordConfirmCurrent, setPasswordConfirmMessage, setIsPasswordConfirm);
+  }, [password]);
 
    return(
     <JoinFrom>
@@ -159,7 +161,7 @@ const navigate = useNavigate();
           placeholder="비밀번호를 한번 더 입력해주세요"
           autoComplete="off"
           name={'passwordConfirm'}
-          onChange={onChangePasswordConfirm}
+          onChange={onPasswordConfirmChange}
           onKeyDown={handleEnter} 
         />
           {confirmPassword.length > 0 && (
@@ -192,17 +194,18 @@ const JoinFrom = styled.form`
   & input {
     box-sizing: border-box;
     width: 310px;
-    height:45px;
-    margin-bottom: 30px ;
+    height:48px;
+    margin-bottom: 20px;
     border: none;
     border-radius: 10px;
     border-bottom: 4px solid #afafaf;
     font-size: 0.875rem;
     top:200px;
+    //background-color: red;
   }
 
   & input::placeholder {
-    font-size: ${fontsize[4]};
+    font-size: ${fontsize[3]};
     color: #ccc;
   }
 
