@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { media } from "../styles/Media/media";
-import { StyleItem ,MediaItem } from "../styles/DetailStyle/CalendarStyle/diary";
+import { StyleItem ,MediaItem } from "../styles/DetailStyle/diary/diary";
 
 const SidebarItem = ({ menu, isActive, isColor }) => {
 

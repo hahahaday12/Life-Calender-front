@@ -6,7 +6,7 @@ import Usertitle from '../pages/user/user';
 import LogoutBox from '../components/logout/logout';
 import { media } from '../styles/Media/media';
 import { fontsize } from '../styles/Media/theme';
-import { MediaImg } from '../styles/DetailStyle/CalendarStyle/diary';
+import { MediaImg } from '../styles/DetailStyle/Layout/layout';
 
 
 const Layout = ({ children }) => {

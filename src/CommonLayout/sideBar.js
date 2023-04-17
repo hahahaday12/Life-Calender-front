@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCalendar } from "@fortawesome/free-regular-svg-icons"
 import { faBook, faListCheck } from "@fortawesome/free-solid-svg-icons"
 import { media } from "../styles/Media/media";
-import { MediaSide, SideStyle } from "../styles/DetailStyle/CalendarStyle/diary";
+import { MediaSide, SideStyle } from "../styles/DetailStyle/diary/diary";
 
 const Sidebar = () => {
 
