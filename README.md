@@ -400,7 +400,7 @@ export const userState = atom({
 -> https://okky.kr/articles/1421448
 
 ###  피드백 정리 
-![KakaoTalk_20230331_232921236](https://user-images.githubusercontent.com/101441685/229549813-378e1987-21cf-46e4-a378-8f00193a08b6.png)
+<img width="782" alt="image" src="https://user-images.githubusercontent.com/101441685/232384486-c02ddef1-63bc-4432-86f2-b075c87947f9.png">
 
 
 1차 수정 2023-04-05<br/>
