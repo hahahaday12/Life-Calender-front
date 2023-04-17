@@ -189,38 +189,35 @@ export default Joininput;
 const JoinFrom = styled.form`
   width: 550px;
   height: 350px;
-  margin: 30px;
+  margin: 40px;
+`
+const Formbox = styled.div`
+  position: relative;
+  margin-bottom: 50px;
+  text-align: center;
+  width: 310px;
+  height:48px;
+  right: 18px;
+  border-radius: 10px;
+  border-bottom: 4px solid #afafaf;
+  background-color: #fff;
 
   & input {
-    box-sizing: border-box;
-    width: 310px;
-    height:48px;
-    margin-bottom: 20px;
-    border: none;
-    border-radius: 10px;
-    border-bottom: 4px solid #afafaf;
-    font-size: 0.875rem;
-    top:200px;
-    //background-color: red;
+    width: 250px;
+    height:40px;
+    border: none;  
+    outline: none;
   }
 
   & input::placeholder {
-    font-size: ${fontsize[3]};
+    font-size: ${fontsize[2]};
     color: #ccc;
   }
 
   & input:focus {
-    outline: none;
-    border: 1px solid #7784cc;
+    
     box-shadow: 0 0 0.1px 0.1px rgb(59 65 99 / 25%);
   }
-`;
-
-const Formbox = styled.div`
-  position: relative;
-  margin-bottom: 20px;
-  text-align: center;
-  right: 18px;
 
   & .message {
       width: 350px;
@@ -231,7 +228,7 @@ const Formbox = styled.div`
       letter-spacing: -1px;
       position: absolute;
       top:50px;
-      left: 0;
+      left: -20px;
       z-index: 100;
       color: white;
   & .success {
@@ -240,7 +237,7 @@ const Formbox = styled.div`
   & .error {
       color: #ff2727;
     }
-}
+  }
 `
 const Linkbox = styled.div`
   left: 250px;
