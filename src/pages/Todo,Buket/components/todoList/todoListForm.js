@@ -1,12 +1,11 @@
-import { useState, forwardRef, useEffect } from 'react';
 import DatePicker from "react-datepicker";
+import { useState, forwardRef, useEffect } from 'react';
 import axios from 'axios';
 import { API_URL } from '../../../../Common/Common';
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark, faPlus} from "@fortawesome/free-solid-svg-icons";
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
-import  { DateStyle}  from '../../../../styles/Common/CommonStyle';
 import { BoxSize,InputWrapStyle, InnerTextStyle, IconStyle  } from '../../../../styles/DetailStyle/ListStyle/common/common';
 import  {TodoListAllWrap, TodoWrap, TodoListBox, H2, TodooContainer}  from '../../../../styles/DetailStyle/ListStyle/todo';
 import Api from '../../../../apis/Api';
@@ -85,8 +84,8 @@ const TodoListForm = () => {
 
   const RemovetodoList = (idx) => {
     ShowConfirm('삭제하시겠습니까?', "info").then((isConfirmed) => {
-      if(window.confirm("삭제하시겠습니까?")){
-        Api.todoDelet(idx)
+      if(isConfirmed){
+      Api.todoDelet(idx)
       .then((response) => { 
         if(response.data.message === "successful"){
           ShowAlert("삭제 되었습니다😉", "success");
@@ -95,10 +94,10 @@ const TodoListForm = () => {
           ShowAlert("삭제 실패","error");
         }
       });
-      } else {
-        ShowAlert("다시 선택해주세요", "info");
-        return false;
-      }
+    } else {
+      ShowAlert('다시 선택해 주세요', 'info');
+      return false
+    }
     });
   };
 
