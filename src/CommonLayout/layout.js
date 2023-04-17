@@ -8,12 +8,14 @@ import { media } from '../styles/Media/media';
 import { fontsize } from '../styles/Media/theme';
 import { MediaImg } from '../styles/DetailStyle/CalendarStyle/diary';
 
+
 const Layout = ({ children }) => {
   return(
       <> 
       <AllBackGround>
         <LeftContainer>
           <img alt='logoimg' src= './img/Life Calander_logo.png'/>
+          
           <Ip>Life <br/> Calendar</Ip>
           <Sidebar/>
         </LeftContainer>

@@ -1,9 +1,8 @@
 import React from 'react'
 import LogoIner from './logoimg'
 import styled from 'styled-components'
-import LoginInput from '../../../../components/Form/LoginForm/login'
-
 import Join from '../../../../components/Button/Joinbutton/index'
+import LoginInput from '../../../../components/Form/LoginForm/login'
 import { AllLayout } from '../../../../styles/Common/CommonStyle'
 import { media } from '../../../../styles/Media/media'
 import './out.css'

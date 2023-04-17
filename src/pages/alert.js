@@ -1,7 +1,6 @@
 import Swal from "sweetalert2";
 
 export function ShowConfirm(text, icon){
-
   const button = document.querySelector('button');
   button.disabled = true;
   return Swal.fire({
@@ -21,20 +20,19 @@ export function ShowAlert(text, icon, confirmText){
 
   try {
     const button = document.querySelector('button');
-  
-
+    
     const swalConfig = {
       text: text,
-      icon : icon,
+      icon: icon,
       allowOutsideClick : false
     }
-
     if(confirmText){
       swalConfig.confirmButtonText = confirmText;
+    }else{
+        //버튼이 없을떄 
       if(button != null){
         button.disabled = true;
       }
-    }else{
       swalConfig.allowOutsideClick = true;
       swalConfig.showConfirmButton = false;
     }

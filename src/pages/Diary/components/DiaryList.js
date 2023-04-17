@@ -1,11 +1,10 @@
-import './diary.css'
 import axios from 'axios';
 import Api from "../../../apis/Api";
 import styled from "styled-components";
 import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import "react-datepicker/dist/react-datepicker.css";
 import Sliderr from "../../Diary/components/slider";
 import { API_URL } from '../../../Common/Common'
 import { useRecoilState } from "recoil";
@@ -15,7 +14,7 @@ import { ShowAlert, ShowConfirm } from '../../alert';
 import { recoilColorState } from "../../../recoil/colorState";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSyncAlt, faCircleCheck } from "@fortawesome/free-solid-svg-icons"
-
+import './diary.css'
 
 const DiaryForm = () => {
 
