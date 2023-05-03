@@ -394,7 +394,7 @@ export const userState = atom({
 
 -------
 
-### 서 배포후 1차 수정 
+### 서비스 배포후 1차 수정 
 
 -> 서비스 배포후 실사용에 대한 피드백을 얻고 싶어 Okky 라는 IT 커뮤니티에 올렸습니다. <br/>
 -> https://okky.kr/articles/1421448
