@@ -16,6 +16,10 @@
 > **프론트 서버** : [https://web-life-calender-front-6g2llffebnui.sel3.cloudtype.app/](https://web-life-calender-front-6g2llffebnui.sel3.cloudtype.app/)<br>
 > **백엔드 서버** : []()<br>
 
+### Test 용 id, password
+ID- test12@naver.com
+PW-Test123456!
+
 ## 📌 유의사항 
 디바이스의 사이즈가 다 다르기 때문에 , 모든 디바이스의 최적화 되어있지 않습니다.<br/> 혹여, 맞지 않으시다면 화면 크기 90% 로 시도해 보시기 바랍니다.<br/>
 
