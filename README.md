@@ -16,6 +16,10 @@
 > **프론트 서버** : [https://web-life-calender-front-6g2llffebnui.sel3.cloudtype.app/](https://web-life-calender-front-6g2llffebnui.sel3.cloudtype.app/)<br>
 > **백엔드 서버** : []()<br>
 
+### Test 용 id, password
+ID- test12@naver.com <br/>
+PW- Test123456!
+
 ## 📌 유의사항 
 디바이스의 사이즈가 다 다르기 때문에 , 모든 디바이스의 최적화 되어있지 않습니다.<br/> 혹여, 맞지 않으시다면 화면 크기 90% 로 시도해 보시기 바랍니다.<br/>
 
@@ -83,10 +87,14 @@ $ npm run start
 ### Config
 ![npm](https://img.shields.io/badge/npm-CB3837?style=for-the-badge&logo=npm&logoColor=white)        
 
-### Development
+### Development Frontend
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=Javascript&logoColor=white)
 ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
-![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=Next.js&logoColor=white)
+![Recoil](https://img.shields.io/badge/Recoil-3578E5?style=for-the-badge&logo=Recoil&logoColor=black)
+![Styled Components](https://img.shields.io/badge/StyledComponents-DB7093?style=for-the-badge&logo=Styled-Components&logoColor=black)
+
+### Development Backed
+![NestJS](https://img.shields.io/badge/NestJS-E0234E?style=for-the-badge&logo=NestJS&logoColor=white)
 
 ### Communication
 ![GoogleMeet](https://img.shields.io/badge/GoogleMeet-00897B?style=for-the-badge&logo=Google%20Meet&logoColor=white)
@@ -100,8 +108,6 @@ $ npm run start
 | <img width="400" alt="image" src="https://user-images.githubusercontent.com/101441685/226154883-bf07b3c5-8f81-4de1-bee2-abfef75c8235.png">| <img width="500" alt="image" src="https://user-images.githubusercontent.com/101441685/226155238-abeff04a-f6ff-4712-ba41-c80d17f9d501.png">    |  <img width="329" src="https://user-images.githubusercontent.com/50205887/208038965-43a6318a-7b05-44bb-97c8-b08b0495fba7.png"/>      |
 |  **Diary 페이지**  
 | <img width="500" alt="image" src="https://user-images.githubusercontent.com/101441685/226282559-9db657c4-769a-4c3c-8775-fb749602c031.png">
-
-
 
 ---
 ## ✨ 주요 기능 ✨
@@ -394,13 +400,13 @@ export const userState = atom({
 
 -------
 
-### 서 배포후 1차 수정 
+### 서비스 배포후 1차 수정 
 
 -> 서비스 배포후 실사용에 대한 피드백을 얻고 싶어 Okky 라는 IT 커뮤니티에 올렸습니다. <br/>
 -> https://okky.kr/articles/1421448
 
 ###  피드백 정리 
-![KakaoTalk_20230331_232921236](https://user-images.githubusercontent.com/101441685/229549813-378e1987-21cf-46e4-a378-8f00193a08b6.png)
+<img width="782" alt="image" src="https://user-images.githubusercontent.com/101441685/232384486-c02ddef1-63bc-4432-86f2-b075c87947f9.png">
 
 
 1차 수정 2023-04-05<br/>
