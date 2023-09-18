@@ -38,30 +38,32 @@ export const MediaSide = css`
   }
 `
 export const StyleItem = css`
-    height: 50px;
-    
-    & .iconBox {
+  height: 50px;
+
+  & .iconBox {
     border-radius: 9px;
-    width: 185px;
+    width: 200px;
     height: 40px;
     display: flex;
     font-size: ${fontsize[2]};
     align-items: center;
+    color: #ffff;
 
-      & span {
-        font-size: ${fontsize[1]};
-        margin-left: 40px;
-      }
-
-      & p {
-        margin-left: 10px;
-      }
+    & span {
+      font-size: ${fontsize[1]};
+      margin-left: 40px;
     }
 
-    .active {
-      color: white;
+    & p {
+      margin-left: 10px;
     }
-`
+  }
+
+  .active {
+    color: #071952;
+    background-color: #beadfa;
+  }
+`;
 
 export const MediaItem = css`
     height: 50px;
