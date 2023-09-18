@@ -1,40 +1,46 @@
-import {RecoilRoot} from 'recoil';
-import { Routes, Route} from 'react-router-dom';
-import PrivateRoute from "./privateRoute";
-import Onepage from './pages/Home/components/main/index';
-import TwoPage from './pages/Join/index'
-import ThirdPage from './pages/Calendar/index';
-import Fourpage from './pages/Todo,Buket/index';
-import Fivepage from './pages/Diary/index';
+import { RecoilRoot } from 'recoil';
+import { Routes, Route } from 'react-router-dom';
+import PrivateRoute from './privateRoute';
+import Signinpage from './pages/Home/components/main/index';
+import SignupPage from './pages/Join/index';
+import CalendarPage from './pages/Calendar/index';
+import TodoBucketpage from './pages/Todo,Buket/index';
+import Diarypage from './pages/Diary/index';
 import Error404 from './pages/404';
 
 function App() {
-
   return (
-    <div className="App">
-      <>
+    <>
       <RecoilRoot>
         <Routes>
-          <Route path="/" element={
-            <PrivateRoute component={<ThirdPage/>} status={<Onepage/>} />
-          }/>
-          <Route path="/twopage" element={<TwoPage/>}/>
+          <Route
+            path="/"
+            element={
+              <PrivateRoute
+                component={<CalendarPage />}
+                status={<Signinpage />}
+              />
+            }
+          />
+          <Route path="/signup" element={<SignupPage />} />
 
-          <Route path="/thirdpage" element={
-            <PrivateRoute component={<ThirdPage/>} />
-          }/>
+          <Route
+            path="/calendar"
+            element={<PrivateRoute component={<CalendarPage />} />}
+          />
 
-          <Route path="/fourpage" element={
-            <PrivateRoute component={<Fourpage/>} />
-          }/>
-          <Route path="/fivepage" element={
-            <PrivateRoute component={<Fivepage/>} />
-          }/>
-          <Route path="/*" element={<Error404 />} /> 
+          <Route
+            path="/todobucket"
+            element={<PrivateRoute component={<TodoBucketpage />} />}
+          />
+          <Route
+            path="/diary"
+            element={<PrivateRoute component={<Diarypage />} />}
+          />
+          <Route path="/*" element={<Error404 />} />
         </Routes>
       </RecoilRoot>
-      </>
-    </div>
-   )
-};
+    </>
+  );
+}
 export default App;

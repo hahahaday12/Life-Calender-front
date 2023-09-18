@@ -12,28 +12,28 @@ const Sidebar = () => {
   const pathName = useLocation().pathname;
 
   const Categorys = [
-    { 
-      id: "page1",
-      name: "Calendar", 
-      path: "/thirdpage",
-      img: "./images/calendar.svg",
-      icon: <FontAwesomeIcon icon={faCalendar}/>
+    {
+      id: 'page1',
+      name: 'Calendar',
+      path: '/calendar',
+      img: './images/calendar.svg',
+      icon: <FontAwesomeIcon icon={faCalendar} />,
     },
-    { 
-      id: "page2",
-      name: "Checklist",
-      path: "/fourpage", 
-      img: "./images/list-check.svg",
-      icon: <FontAwesomeIcon icon={faListCheck}/>
+    {
+      id: 'page2',
+      name: 'Checklist',
+      path: '/todobucket',
+      img: './images/list-check.svg',
+      icon: <FontAwesomeIcon icon={faListCheck} />,
     },
-    { 
-      id: "page3",
-      name: "Diarybook", 
-      path: "/fivepage",
-      img: "./images/book-solid.svg",
-      icon: <FontAwesomeIcon icon={faBook}/>
+    {
+      id: 'page3',
+      name: 'Diarybook',
+      path: '/diary',
+      img: './images/book-solid.svg',
+      icon: <FontAwesomeIcon icon={faBook} />,
     },
-  ]
+  ];
 
   const isColor = 
     pathName === "/thirdpage" ? "#E5636F"
