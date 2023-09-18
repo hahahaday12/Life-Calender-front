@@ -5,7 +5,7 @@ import ImgLayout from './components/layout/leftBar';
 import { LeftContainer, AllLayout, InnerPlaceHolder } from '../../styles/Common/CommonStyle';
 import { media } from '../../styles/Media/media';
 
-const TwoPage = () => {
+const SignupPage = () => {
     return(
         <>
         <JoinLatout>
@@ -23,7 +23,7 @@ const TwoPage = () => {
         </>
     )
 };
-export default TwoPage;
+export default SignupPage;
 
 const JoinLatout = styled.div`
   ${AllLayout}

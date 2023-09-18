@@ -7,7 +7,7 @@ import { AllLayout } from '../../../../styles/Common/CommonStyle'
 import { media } from '../../../../styles/Media/media'
 import './out.css'
 
-const Onepage = () => {
+const Signinpage = () => {
     return(
         <>
         <Allwrap>
@@ -26,7 +26,7 @@ const Onepage = () => {
         </>
     )
 };
-export default Onepage;
+export default Signinpage;
 
 const Allwrap = styled.div`
   ${AllLayout}

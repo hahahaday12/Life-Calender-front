@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import useInputs from '../../../hooks/useInputs';
@@ -7,7 +6,7 @@ import TokenRepository from '../../../repository/TokenRepository';
 import { InnerPlaceHolder } from '../../../styles/Common/CommonStyle';
 import { fontsize } from '../../../styles/Media/theme';
 import { ShowAlert } from '../../../pages/alert';
-import { faLastfmSquare } from '@fortawesome/free-brands-svg-icons';
+
 
 const LoginInput = () => {
   const navigate = useNavigate();
@@ -44,7 +43,7 @@ const LoginInput = () => {
             ShowAlert('로그인되었습니다.', 'success', '확인').then(
               (isConfirmed) => {
                 if (isConfirmed) {
-                  navigate('/thirdpage');
+                  navigate('/diary');
                 }
               }
             );

@@ -7,7 +7,7 @@ import {HTML5Backend} from "react-dnd-html5-backend";
 import { media } from "../../styles/Media/media";
 
 
-const Fourpage = () => {
+const TodoBucketpage = () => {
   return (
     <>
       <Layout>
@@ -22,7 +22,7 @@ const Fourpage = () => {
   )
 }
 
-export default Fourpage;
+export default TodoBucketpage;
 
 
 const ListWrap = styled.div`

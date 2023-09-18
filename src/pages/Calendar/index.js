@@ -1,7 +1,7 @@
 import Layout from '../../CommonLayout/layout';
 import Full from './CalendarLayout';
 
-const ThirdPage = () => {
+const CalendarPage = () => {
   return(
     <>
     <Layout>
@@ -11,5 +11,5 @@ const ThirdPage = () => {
     </>
   )
 };
-export default ThirdPage;
+export default CalendarPage;
 

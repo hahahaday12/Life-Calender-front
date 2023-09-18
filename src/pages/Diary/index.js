@@ -4,7 +4,7 @@ import Layout from "../../CommonLayout/layout"
 import ColorForm from "./components/ColorList";
 import { media } from '../../styles/Media/media';
 
-const Fivepage = () => {
+const Diarypage = () => {
   return (
     <>
       <Layout>  
@@ -16,7 +16,7 @@ const Fivepage = () => {
     </>
   )
 };
-export default Fivepage;
+export default Diarypage;
 
 const DiaryContainer = styled.div`
   width: 800px;
