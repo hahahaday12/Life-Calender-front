@@ -1,89 +1,94 @@
 import axios from 'axios';
-import Api from "../../../apis/Api";
-import styled from "styled-components";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
+import Api from '../../../apis/Api';
+import styled from 'styled-components';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import Sliderr from "../../Diary/components/slider";
-import { API_URL } from '../../../Common/Common'
-import { useRecoilState } from "recoil";
+import Sliderr from '../../Diary/components/slider';
+import { API_URL } from '../../../Common/Common';
+import { useRecoilState } from 'recoil';
 import { useState, forwardRef, useEffect } from 'react';
-import { media } from "../../../styles/Media/media";
+import { media } from '../../../styles/Media/media';
 import { ShowAlert, ShowConfirm } from '../../alert';
-import { recoilColorState } from "../../../recoil/colorState";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSyncAlt, faCircleCheck } from "@fortawesome/free-solid-svg-icons"
-import './diary.css'
+import { recoilColorState } from '../../../recoil/colorState';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSyncAlt, faCircleCheck } from '@fortawesome/free-solid-svg-icons';
+import './diary.css';
 
 const DiaryForm = () => {
-
-  const [recoilColor, setRecoilColor] = useRecoilState(recoilColorState);
-  const defaultColor = { ...recoilColor };
-  const [colorPeeker, setColorPeeker ] = useState(defaultColor.color);
+  const [recoilColor] = useRecoilState(recoilColorState);
+  const [colorPeeker, setColorPeeker] = useState(...recoilColor.color);
   const [ViewData, setViewData] = useState({
-    id:""
-    ,title:""
-    ,content:""
-    ,date: new Date()
-    ,color:""
-  }) 
+    id: '',
+    title: '',
+    content: '',
+    date: new Date(),
+    color: '',
+  });
   const { title, content, date } = ViewData;
 
   const [list, setData] = useState([]);
-  
-  useEffect(()=> {
-    setViewData({
-       date: new Date()
-       ,color:colorPeeker
-    })
-    search();
-  },[]);
 
-  useEffect(() =>{
+  useEffect(() => {
+    setViewData({
+      date: new Date(),
+      color: colorPeeker,
+    });
+    search();
+  }, []);
+
+  useEffect(() => {
     const tmpColor = { ...recoilColor };
     setColorPeeker(tmpColor.color);
     let defaultDate = new Date();
-    if(ViewData.date !== ""){
-        defaultDate = new Date(ViewData.date);
+    if (ViewData.date !== '') {
+      defaultDate = new Date(ViewData.date);
     }
     setViewData({
       ...ViewData,
-      color:tmpColor.color,
-      date:defaultDate
-    })
-  },[recoilColor])
+      color: tmpColor.color,
+      date: defaultDate,
+    });
+  }, [recoilColor]);
 
   const search = (params) => {
     let date = null;
-    if(params){
+    if (params) {
       date = params;
-    }else{
+    } else {
       defaultSetting();
       date = new Date(ViewData.date);
     }
-    axios.get(API_URL+ '/diary?year='+String(date.getFullYear())+'&month='+String(date.getMonth()+1))
-    .then((response) => {
-      let listData = [];
-      for(let i=0;i<response.data.data.length;i++){
+    axios
+      .get(
+        API_URL +
+          '/diary?year=' +
+          String(date.getFullYear()) +
+          '&month=' +
+          String(date.getMonth() + 1)
+      )
+      .then((response) => {
+        let listData = [];
+        for (let i = 0; i < response.data.data.length; i++) {
           listData[i] = response.data.data[i];
-          listData[i].date = UTCchangeKST(response.data.data[i].date)
-      }   
-      setData(listData);
-    })
+          listData[i].date = UTCchangeKST(response.data.data[i].date);
+        }
+        setData(listData);
+      });
   };
 
   const defaultSetting = () => {
     setViewData({
-       id:""
-      ,title:""
-      ,content:""
-      ,date: new Date()
-      ,color: "#5800FF"
-    })
+      id: '',
+      title: '',
+      content: '',
+      date: new Date(),
+      color: '#5800FF',
+    });
   };
 
-  //utc 날짜를 kst 날짜로 변환 
+  //utc 날짜를 kst 날짜로 변환
   const UTCchangeKST = (date) => {
     let krDate = new Date(date);
     krDate.setHours(krDate.getHours() + 9);
@@ -91,89 +96,92 @@ const DiaryForm = () => {
   };
 
   const DatePick = forwardRef(({ value, onClick }, ref) => (
-    <Datebutton className='custom-btn'
-      onClick={onClick} ref={ref}>
-        {value}
-    </Datebutton> ));
+    <Datebutton className="custom-btn" onClick={onClick} ref={ref}>
+      {value}
+    </Datebutton>
+  ));
 
   const getChangeDate = (date) => {
     setViewData({
       ...ViewData,
-      'date': date,
-    })
+      date: date,
+    });
     search(date);
   };
-  
+
   const getChangeValue = (e) => {
-    const{name, value} = e.target;
+    const { name, value } = e.target;
     setViewData({
       ...ViewData,
-      [name]: value
-    })
+      [name]: value,
+    });
   };
 
   const update = () => {
-    ShowConfirm("수정하시겠습니까?", "info").then((isConfirmed) => {
-      if(isConfirmed){
+    ShowConfirm('수정하시겠습니까?', 'info').then((isConfirmed) => {
+      if (isConfirmed) {
         Api.diaryPatch(ViewData).then((response) => {
-          if(response.data.message === "successful"){
-            search()
-            defaultSetting()
+          if (response.data.message === 'successful') {
+            search();
+            defaultSetting();
           } else {
-          ShowAlert("system 오류 입니다. 문의주세요.", "error");
+            ShowAlert('system 오류 입니다. 문의주세요.', 'error');
           }
-        })
+        });
       } else {
-        ShowAlert("취소 되었습니다.", "info")
+        ShowAlert('취소 되었습니다.', 'info');
       }
-    })
+    });
   };
 
   const create = () => {
-    ShowConfirm('다이어리를 등록 하시겠습니까?', "info").then((isConfirmed) => {
-      if(isConfirmed){
+    ShowConfirm('다이어리를 등록 하시겠습니까?', 'info').then((isConfirmed) => {
+      if (isConfirmed) {
         Api.diaryPost(ViewData).then((response) => {
-          ShowAlert("등록 완료😊", "success", "확인")
-            defaultSetting();
-            search();
-        })
-      }else{
-        ShowAlert("취소 되었습니다.", "info")
+          ShowAlert('등록 완료😊', 'success', '확인');
+          defaultSetting();
+          search();
+        });
+      } else {
+        ShowAlert('취소 되었습니다.', 'info');
       }
     });
   };
 
   const submit = () => {
-    if(ViewData.title === '' || ViewData.title === " "
-      || ViewData.content === '' || ViewData.content === " "
-    ){
-      ShowAlert("제목과 내용은 필수 입니다.", "warning");
+    if (
+      ViewData.title === '' ||
+      ViewData.title === ' ' ||
+      ViewData.content === '' ||
+      ViewData.content === ' '
+    ) {
+      ShowAlert('제목과 내용은 필수 입니다.', 'warning');
       return false;
     }
-    if(ViewData.id === ""){ 
+    if (ViewData.id === '') {
       create();
     } else {
-      update(); 
+      update();
     }
   };
 
   const ResetBtnClick = () => {
-    ShowConfirm('처음으로 돌아가시겠습니까?', "info").then((isConfirmed) => {
-      if(isConfirmed){
-        defaultSetting()
-      }else{
+    ShowConfirm('처음으로 돌아가시겠습니까?', 'info').then((isConfirmed) => {
+      if (isConfirmed) {
+        defaultSetting();
+      } else {
         return false;
       }
     });
   };
 
   const updateList = (newlist) => {
-    setViewData(newlist)
+    setViewData(newlist);
   };
 
   const handleEnter = (e) => {
     if (e.key === 'Enter') {
-      if(!e.shiftKey){
+      if (!e.shiftKey) {
         submit();
       }
     }
@@ -181,63 +189,59 @@ const DiaryForm = () => {
 
   return (
     <>
-    <AllDiaryBox>
-      <DiaryContainer style={{backgroundColor:ViewData.color}}>
-        <PostTitle>
-          <Datebox>
-            <DatePicker
-              value={date}
-              dateFormat="yyyy-MM-dd"
-              selected={ViewData.date}
-              onChange={getChangeDate}
-              customInput={<DatePick/>}
+      <AllDiaryBox>
+        <DiaryContainer style={{ backgroundColor: ViewData.color }}>
+          <PostTitle>
+            <Datebox>
+              <DatePicker
+                value={date}
+                dateFormat="yyyy-MM-dd"
+                selected={ViewData.date}
+                onChange={getChangeDate}
+                customInput={<DatePick />}
+              />
+            </Datebox>
+
+            <div className="inputBox">
+              <input
+                type="text"
+                placeholder="제목을 작성해주세요"
+                onChange={getChangeValue}
+                name="title"
+                value={title}
+              />
+            </div>
+
+            <FontAwesomeIcon
+              type="button"
+              className="CheckIcon"
+              icon={faCircleCheck}
+              onClick={submit}
             />
-          </Datebox>
 
-          <div className='inputBox'>
-            <input
-              type="text"
-              placeholder="제목을 작성해주세요"
-              onChange={getChangeValue}
-              name='title'
-              value={title}
+            <FontAwesomeIcon
+              type="button"
+              className="beforeIcon"
+              icon={faSyncAlt}
+              onClick={ResetBtnClick}
             />
-          </div>
-
-          <FontAwesomeIcon
-            type='button'
-            className="CheckIcon" 
-            icon={faCircleCheck} 
-            onClick={submit}
-          />
-
-          <FontAwesomeIcon
-            type='button'
-            className="beforeIcon" 
-            icon={faSyncAlt}
-            onClick={ResetBtnClick}
-          />
-        </PostTitle>
+          </PostTitle>
           <WriteInnerBox>
             <PostForm>
               <textarea
                 type="text"
                 placeholder="일기내용을 작성해주세요. 줄바꿈은 shift + Enter"
                 onChange={getChangeValue}
-                name='content'
+                name="content"
                 value={content}
-                onKeyDown={handleEnter} 
+                onKeyDown={handleEnter}
               />
             </PostForm>
           </WriteInnerBox>
-      </DiaryContainer>
+        </DiaryContainer>
 
-      <Sliderr 
-        list={list} 
-        search={search}
-        refreshFunction={updateList}
-      />
-    </AllDiaryBox>
+        <Sliderr list={list} search={search} refreshFunction={updateList} />
+      </AllDiaryBox>
     </>
   );
 };
@@ -245,14 +249,14 @@ export default DiaryForm;
 
 const DiaryContainer = styled.div`
   max-width: 620px;
-  max-height: 340PX;
+  max-height: 340px;
   margin: 0 auto;
   border-radius: 15px;
   background-color: ${(props) => props.background};
   justify-content: center;
   padding: 27px;
   position: absolute;
-  top:50px;
+  top: 50px;
 
   ${media.mobileS`    
   width: 485px;
@@ -268,7 +272,7 @@ const DiaryContainer = styled.div`
   ${media.desktopM`    
     width: 620px;
   `}
-`
+`;
 
 const PostTitle = styled.div`
   width: 560px;
@@ -278,9 +282,9 @@ const PostTitle = styled.div`
   align-items: center;
   justify-content: end;
   margin-bottom: 10px;
-  font-family: "Gaegu", serif;
+  font-family: 'Gaegu', serif;
 
-  & .inputBox{
+  & .inputBox {
     width: 250px;
     height: 35px;
     border-radius: 20px;
@@ -291,7 +295,7 @@ const PostTitle = styled.div`
     padding: 0 20px;
     margin-right: 10px;
     right: 60px;
-    font-family: "Gaegu", serif;
+    font-family: 'Gaegu', serif;
 
     ${media.mobileS`    
       width: 200px;
@@ -305,7 +309,7 @@ const PostTitle = styled.div`
     & input {
       width: 100%;
       border: none;
-      font-family: "Gaegu", serif;
+      font-family: 'Gaegu', serif;
       :focus {
         outline: none;
       }
@@ -315,10 +319,10 @@ const PostTitle = styled.div`
     width: 50px;
     height: 35px;
     color: white;
-    position:relative;
-    right:30px;
+    position: relative;
+    right: 30px;
   }
-  & .beforeIcon{
+  & .beforeIcon {
     width: 35px;
     height: 35px;
     color: white;
@@ -335,14 +339,14 @@ const PostTitle = styled.div`
   ${media.desktopM`    
     width: 560px; 
   `}
-`
+`;
 
 const WriteInnerBox = styled.div`
   width: 100%;
   height: 260px;
   border-radius: 10px;
   margin: 0 auto;
-`
+`;
 const PostForm = styled.form`
   width: auto;
   height: auto;
@@ -354,10 +358,10 @@ const PostForm = styled.form`
     height: 190px;
     border: none;
     padding: 15px 15px;
-    font-family: "Gaegu", serif;
+    font-family: 'Gaegu', serif;
     ::-webkit-scrollbar {
       width: 8px;
-      background-color: #F4F4F4;
+      background-color: #f4f4f4;
       border-radius: 10px;
     }
     ::-webkit-scrollbar-thumb {
@@ -369,20 +373,20 @@ const PostForm = styled.form`
       outline: none;
     }
   }
-`
+`;
 const Datebutton = styled.button`
   width: 110px;
   height: 40px;
   border: none;
   border-radius: 30px;
-  background-color: #8D72E1;
+  background-color: #8d72e1;
   color: white;
-  font-family: "Gaegu", serif;
- 
-  :hover{
-    background-color: #AD7BE9;
+  font-family: 'Gaegu', serif;
+
+  :hover {
+    background-color: #ad7be9;
   }
-`
+`;
 const Datebox = styled.div`
   width: 140px;
   height: 40px;
@@ -404,9 +408,9 @@ const Datebox = styled.div`
     width: 140px;
     right: 70px;
   `}
-`
+`;
 const AllDiaryBox = styled.div`
   width: 100%;
   height: 500px;
   position: relative;
-`
+`;

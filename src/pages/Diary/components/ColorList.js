@@ -1,17 +1,16 @@
-import { useState, useEffect } from "react";
-import styled from "styled-components";
-import { Color } from '../../../resource/color'
-import { useRecoilState } from "recoil";
-import {recoilColorState} from "../../../recoil/colorState"
-import { media } from "../../../styles/Media/media";
-import { fontsize } from "../../../styles/Media/theme";
+import { useState, useEffect } from 'react';
+import styled from 'styled-components';
+import { Color } from '../../../resource/color';
+import { useRecoilState } from 'recoil';
+import { recoilColorState } from '../../../recoil/colorState';
+import { media } from '../../../styles/Media/media';
+import { fontsize } from '../../../styles/Media/theme';
 
 const ColorForm = () => {
-
-  const [recoilColor, setRecoilColor] = useRecoilState(recoilColorState);
+  const [, setRecoilColor] = useRecoilState(recoilColorState);
   const colorArray = Object.values(Color);
   const colorNameArray = Object.keys(Color);
-  const [colorState, setColorState] = useState("#5800FF");
+  const [colorState, setColorState] = useState('#5800FF');
 
   const onColorChangeHandler = (color) => {
     setColorState(color);
@@ -19,29 +18,29 @@ const ColorForm = () => {
 
   useEffect(() => {
     const changedColor = {
-      color: colorState
+      color: colorState,
     };
     setRecoilColor(changedColor);
-  }, [colorState]);
+  }, [colorState, setRecoilColor]);
 
   return (
     <>
       <WhiteContainer>
-       <p className="titleText">오늘의 기분은 어떤 색인가요?</p>
-          <ColorPallete>
-            {colorArray.map((color, index) => (
-              <ColorCircle key={color} background={color}>
-                <label for={color}></label>
-                <input
-                  type="radio"
-                  id={color}
-                  checked={colorState === color}
-                  onChange={() => onColorChangeHandler(color, index)}
-                />
-                <p>{colorNameArray[index]}</p>
-              </ColorCircle>
-            ))}
-          </ColorPallete>
+        <p className="titleText">오늘의 기분은 어떤 색인가요?</p>
+        <ColorPallete>
+          {colorArray.map((color, index) => (
+            <ColorCircle key={color} background={color}>
+              <label for={color}></label>
+              <input
+                type="radio"
+                id={color}
+                checked={colorState === color}
+                onChange={() => onColorChangeHandler(color, index)}
+              />
+              <p>{colorNameArray[index]}</p>
+            </ColorCircle>
+          ))}
+        </ColorPallete>
       </WhiteContainer>
     </>
   );
@@ -51,14 +50,14 @@ export default ColorForm;
 const WhiteContainer = styled.div`
   width: 630px;
   height: 136px;
-  background-color: #CED0E9;
+  background-color: #ced0e9;
   border-radius: 10px;
   display: inline-block;
   margin: 0 auto;
   position: relative;
   right: 120px;
   top: 60px;
-  
+
   & .titleText {
     text-align: center;
     margin-top: 25px;
@@ -82,7 +81,7 @@ const WhiteContainer = styled.div`
     width: 630px;
     left: 10px;
   `}
-`
+`;
 
 const ColorPallete = styled.ul`
   width: 100%;
@@ -97,7 +96,7 @@ const ColorPallete = styled.ul`
     font-size: ${fontsize[0]};
     margin-left: 20px;
   `}
-  
+
   ${media.tablet`   
     margin-left: 17px;
     top: 10px;

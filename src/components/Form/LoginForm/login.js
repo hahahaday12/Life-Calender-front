@@ -53,7 +53,9 @@ const LoginInput = () => {
     } catch (error) {
       ShowAlert('로그인 실패했습니다.', 'warning', '확인').then(
         (isConfirmed) => {
-          return false;
+          if (isConfirmed) {
+            return false;
+          }
         }
       );
     }
