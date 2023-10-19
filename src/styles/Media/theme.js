@@ -1,11 +1,3 @@
-import styled from "styled-components";
-
-
-const colors = {
-  // black: "#000000",
-  // grey: "#999999",
-};
-
 export const fontsize = [
   "13px"   //0
   ,"15px"  //1
@@ -18,8 +10,7 @@ export const fontsize = [
 
 
 const theme = {
-  fontsize,
-  colors,
+  fontsize
 };
 
 export default theme;
