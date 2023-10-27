@@ -10,52 +10,55 @@ import { ShowAlert } from '../../../pages/alert.js';
 
 const Joininput = () => {
   const navigate = useNavigate();
-  // 이름 , 비밀번호, 이메일 , 비밀번호 확인
-  const [email, setUserEmail] = useState('');
-  const [name, setUserName] = useState('');
-  const [password, setUserPassword] = useState('');
+
+  // 이름, 비밀번호, 이메일, 비밀번호 확인
+  const [email, setEmail] = useState('');
+  const [name, setName] = useState('');
+  const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
 
-  //비밀번호 유효성 검사
+  // 유효성 검사 상태 및 메시지
   const [isName, setIsName] = useState(false);
   const [isEmail, setIsEmail] = useState(false);
   const [isPassword, setIsPassword] = useState(false);
   const [isPasswordConfirm, setIsPasswordConfirm] = useState(false);
 
-  //오류 메세지 저장
   const [nameMessage, setNameMessage] = useState('');
   const [emailMessage, setEmailMessage] = useState('');
   const [passwordMessage, setPasswordMessage] = useState('');
   const [passwordConfirmMessage, setPasswordConfirmMessage] = useState('');
 
+  const navigateToHome = () => navigate('/');
+
   const handleEnter = (e) => {
     if (e.key === 'Enter') {
-      onSignUpSumit();
+      onSignUpSubmit();
     }
   };
 
   useEffect(() => {
     if (confirmPassword) {
-      onChangePasswordConfirm(
-        password,
-        confirmPassword,
-        setPasswordConfirmMessage,
-        setIsPasswordConfirm
-      );
+      validatePasswordConfirm(password, confirmPassword);
     }
   }, [password, confirmPassword]);
 
-  const onSignUpSumit = () => {
-    if (email === undefined || email === '' || email === null) {
-      ShowAlert('이메일 입력해주세요.', 'warning');
+  const validatePasswordConfirm = (password, confirmPassword) => {
+    if (password === confirmPassword) {
+      setPasswordConfirmMessage('비밀번호를 똑같이 입력했어요 : )');
+      setIsPasswordConfirm(true);
+    } else {
+      setPasswordConfirmMessage('비밀번호가 틀립니다. 다시 입력해주세요.');
+      setIsPasswordConfirm(false);
+    }
+  };
+
+  const onSignUpSubmit = () => {
+    if (!email) {
+      ShowAlert('이메일을 입력해주세요.', 'warning');
       return false;
     }
 
-    if (
-      isEmail === false ||
-      isPassword === false ||
-      isPasswordConfirm === false
-    ) {
+    if (!(isEmail && isPassword && isPasswordConfirm)) {
       ShowAlert('값이 잘못 되었습니다. 다시 입력해주세요', 'warning');
       return false;
     }
@@ -65,7 +68,7 @@ const Joininput = () => {
         .then((res) => {
           if (res.status === 201) {
             ShowAlert('가입되었습니다.', 'success', '확인');
-            navigate('/');
+            navigateToHome();
           }
         })
         .catch((error) => {
@@ -77,10 +80,10 @@ const Joininput = () => {
     }
   };
 
-  // 이름
   const onChangeName = useCallback((e) => {
-    setUserName(e.target.value);
-    if (e.target.value.length < 2 || e.target.value.length > 5) {
+    const nameValue = e.target.value;
+    setName(nameValue);
+    if (nameValue.length < 2 || nameValue.length > 5) {
       setNameMessage('2글자 이상 5글자 미만으로 입력해주세요.');
       setIsName(false);
     } else {
@@ -89,11 +92,10 @@ const Joininput = () => {
     }
   }, []);
 
-  //이메일
   const onChangeEmail = useCallback((e) => {
-    const emails = e.target.value;
-    setUserEmail(emails);
-    if (emailCheck(emails)) {
+    const emailValue = e.target.value;
+    setEmail(emailValue);
+    if (emailCheck(emailValue)) {
       setEmailMessage('올바른 이메일 형식이에요 : )');
       setIsEmail(true);
     } else {
@@ -102,49 +104,26 @@ const Joininput = () => {
     }
   }, []);
 
-  // 비밀번호 
   const onChangePassword = useCallback((e) => {
-    const passwordCurrent = e.target.value;
-    setUserPassword(passwordCurrent);
-
-    if (!PwCheck(passwordCurrent)) {
+    const passwordValue = e.target.value;
+    setPassword(passwordValue);
+    if (!PwCheck(passwordValue)) {
       setPasswordMessage(
-        '숫자+영문자+특수문자 조합으로8자리 이상 입력해주세요.'
+        '숫자+영문자+특수문자 조합으로 8자리 이상 입력해주세요.'
       );
       setIsPassword(false);
     } else {
       setPasswordMessage('안전한 비밀번호에요 : )');
       setIsPassword(true);
     }
-    },[]);
+  }, []);
 
-  // 
-  const onChangePasswordConfirm = (
-    password,
-    confirmPassword,
-    setPasswordConfirmMessage,
-    setIsPasswordConfirm
-  ) => {
-    if (password === confirmPassword) {
-      setPasswordConfirmMessage('비밀번호를 똑같이 입력했어요 : )');
-      setIsPasswordConfirm(true);
-    } else {
-      setPasswordConfirmMessage('비밀번호가 틀립니다. 다시 입력해주세요.');
-      setIsPasswordConfirm(false);
-    }
-  };
-
-  // 비밀번호 확인
-  const onPassword = useCallback(
+  //passwordConfirm 의 값이 변경될 때 호출
+  const onRepassword = useCallback(
     (e) => {
-      const passwordConfirmCurrent = e.target.value;
-      setConfirmPassword(passwordConfirmCurrent);
-      onChangePasswordConfirm(
-        password,
-        passwordConfirmCurrent,
-        setPasswordConfirmMessage,
-        setIsPasswordConfirm
-      );
+      const passwordConfirmValue = e.target.value;
+      setConfirmPassword(passwordConfirmValue);
+      validatePasswordConfirm(password, passwordConfirmValue);
     },
     [password]
   );
@@ -155,8 +134,8 @@ const Joininput = () => {
         <input
           placeholder="이메일을 입력하세요"
           autoComplete="off"
-          type={'text'}
-          name={'email'}
+          type="text"
+          name="email"
           onChange={onChangeEmail}
         />
         {email.length > 0 && (
@@ -168,10 +147,10 @@ const Joininput = () => {
 
       <Formbox>
         <input
-          type={'name'}
+          type="name"
           placeholder="이름을 입력하세요"
           autoComplete="off"
-          name={'name'}
+          name="name"
           onChange={onChangeName}
         />
         {name.length > 0 && (
@@ -182,10 +161,10 @@ const Joininput = () => {
       </Formbox>
       <Formbox>
         <input
-          type={'password'}
+          type="password"
           placeholder="비밀번호를 입력하세요"
           autoComplete="off"
-          name={'password'}
+          name="password"
           onChange={onChangePassword}
         />
         {password.length > 0 && (
@@ -196,11 +175,11 @@ const Joininput = () => {
       </Formbox>
       <Formbox>
         <input
-          type={'password'}
+          type="password"
           placeholder="비밀번호를 한번 더 입력해주세요"
           autoComplete="off"
-          name={'passwordConfirm'}
-          onChange={onPassword}
+          name="passwordConfirm"
+          onChange={onRepassword}
           onKeyDown={handleEnter}
         />
         {confirmPassword.length > 0 && (
@@ -216,7 +195,7 @@ const Joininput = () => {
           type="submit"
           disabled={!(isName && isEmail && isPassword && isPasswordConfirm)}
         >
-          <ButtonText onClick={onSignUpSumit}>등록</ButtonText>
+          <ButtonText onClick={onSignUpSubmit}>등록</ButtonText>
         </RegisterButton>
       </section>
       <Linkbox>
