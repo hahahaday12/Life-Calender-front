@@ -28,6 +28,9 @@ const Joininput = () => {
   const [passwordMessage, setPasswordMessage] = useState('');
   const [passwordConfirmMessage, setPasswordConfirmMessage] = useState('');
 
+  const [passwordVisible, setPasswordVisible] = useState(false);
+  const [confirmPasswordVisible, setConfirmPasswordVisible] = useState(false);
+
   const navigateToHome = () => navigate('/');
 
   const handleEnter = (e) => {
@@ -118,6 +121,14 @@ const Joininput = () => {
     }
   }, []);
 
+  const togglePasswordVisibility = () => {
+    setPasswordVisible(!passwordVisible);
+  };
+
+  const toggleConfirmPasswordVisibility = () => {
+    setConfirmPasswordVisible(!confirmPasswordVisible);
+  };
+
   //passwordConfirm 의 값이 변경될 때 호출
   const onRepassword = useCallback(
     (e) => {
@@ -161,7 +172,7 @@ const Joininput = () => {
       </Formbox>
       <Formbox>
         <input
-          type="password"
+          type={passwordVisible ? 'text' : 'password'}
           placeholder="비밀번호를 입력하세요"
           autoComplete="off"
           name="password"
@@ -172,10 +183,13 @@ const Joininput = () => {
             {passwordMessage}
           </span>
         )}
+        <span className="password-toggle" onClick={togglePasswordVisibility}>
+          {passwordVisible ? '숨기기' : '보이기'}
+        </span>
       </Formbox>
       <Formbox>
         <input
-          type="password"
+          type={confirmPasswordVisible ? 'text' : 'password'}
           placeholder="비밀번호를 한번 더 입력해주세요"
           autoComplete="off"
           name="passwordConfirm"
@@ -189,6 +203,12 @@ const Joininput = () => {
             {passwordConfirmMessage}
           </span>
         )}
+        <span
+          className="password-toggle"
+          onClick={toggleConfirmPasswordVisibility}
+        >
+          {confirmPasswordVisible ? '숨기기' : '보이기'}
+        </span>
       </Formbox>
       <section>
         <RegisterButton
@@ -260,6 +280,7 @@ const Formbox = styled.div`
     }
   }
 `;
+
 const Linkbox = styled.div`
   left: 250px;
   width: 120px;
@@ -273,6 +294,7 @@ const Linkbox = styled.div`
     text-decoration: none;
   }
 `;
+
 const ButtonText = styled.div`
   font-size: ${fontsize[2]};
   color: white;
