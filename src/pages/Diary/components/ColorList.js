@@ -14,14 +14,8 @@ const ColorForm = () => {
 
   const onColorChangeHandler = (color) => {
     setColorState(color);
+    setRecoilColor({ color });
   };
-
-  useEffect(() => {
-    const changedColor = {
-      color: colorState,
-    };
-    setRecoilColor(changedColor);
-  }, [colorState, setRecoilColor]);
 
   return (
     <>
@@ -66,7 +60,7 @@ const WhiteContainer = styled.div`
   }
 
   ${media.mobileS`    
-    width: 490px;
+    width: 410px;
     left: -10px;
     top: 10px;
   `}
@@ -92,9 +86,10 @@ const ColorPallete = styled.ul`
   margin-top: 30px;
 
   ${media.mobileS`    
-    width: 100%;
+    width: 370px;
     font-size: ${fontsize[0]};
     margin-left: 20px;
+    position: relative;
   `}
 
   ${media.tablet`   
