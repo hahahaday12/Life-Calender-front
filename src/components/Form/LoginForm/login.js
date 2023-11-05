@@ -7,13 +7,12 @@ import { InnerPlaceHolder } from '../../../styles/Common/CommonStyle';
 import { fontsize } from '../../../styles/Media/theme';
 import { ShowAlert } from '../../../pages/alert';
 
-
 const LoginInput = () => {
   const navigate = useNavigate();
 
   const [{ email, password }, onChangeForm] = useInputs({
-    email: '',
-    password: '',
+    email: 'test12@gmail.com',
+    password: 'Test123456789!',
   });
 
   const handleEnter = (e) => {
