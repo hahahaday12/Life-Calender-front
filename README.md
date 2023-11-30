@@ -12,7 +12,6 @@
 
 ## 배포 주소
 
-> **개발 버전** : [https://web-life-calender-front-6g2llffebnui.sel3.cloudtype.app/](https://web-life-calender-front-6g2llffebnui.sel3.cloudtype.app/) <br>
 > **프론트 서버** : [https://web-life-calender-front-6g2llffebnui.sel3.cloudtype.app/](https://web-life-calender-front-6g2llffebnui.sel3.cloudtype.app/)<br>
 > **백엔드 서버** : []()<br>
 
